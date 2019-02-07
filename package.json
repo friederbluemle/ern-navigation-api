@@ -1,0 +1,28 @@
+{
+  "author": "Deepu Eswararth Ganapathiyadan",
+  "dependencies": {
+    "react-native-electrode-bridge": "1.5.x"
+  },
+  "description": "ERN Generated API for ernnavigationApi",
+  "devDependencies": {
+    "flow-bin": "^0.47.0"
+  },
+  "ern": {
+    "message": {
+      "moduleName": "ernnavigationApi",
+      "namespace": "com.ernnavigationApi.ern",
+      "apiSchemaPath": "schema.json",
+      "artifactId": "react-native-ernnavigationApi-api"
+    },
+    "moduleType": "ern-api"
+  },
+  "keywords": [
+    "ern-api"
+  ],
+  "main": "javascript/src/index.js",
+  "name": "ernnavigation-api",
+  "scripts": {
+    "flow": "flow"
+  },
+  "version": "0.0.1"
+}
