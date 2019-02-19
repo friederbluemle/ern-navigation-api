@@ -1,4 +1,4 @@
-import _ENNavigationApi from './api/ENNavigationApi';
+import _EnNavigationApi from './api/EnNavigationApi';
 
 
-export const ENNavigationApi = _ENNavigationApi;
+export const EnNavigationApi = _EnNavigationApi;

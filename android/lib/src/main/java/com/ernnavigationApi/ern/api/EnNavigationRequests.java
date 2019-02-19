@@ -25,7 +25,7 @@ import java.util.*;
 import com.ernnavigationApi.ern.model.ErnRoute;
 
 
-final class EnNavigationRequests implements ENNavigationApi.Requests {
+final class EnNavigationRequests implements EnNavigationApi.Requests {
     EnNavigationRequests() {}
 
 

@@ -9,12 +9,12 @@
  * Do not edit the class manually.
  */
 import {expect} from 'chai';
-import ENNavigationRequests  from '../../src/api/ENNavigationRequests';
+import EnNavigationRequests  from '../../src/api/EnNavigationRequests';
 
-describe('ENNavigationApi', function(){
+describe('EnNavigationApi', function(){
   let requests;
   beforeEach(function() {
-    requests = new ENNavigationRequests({
+    requests = new EnNavigationRequests({
         registerHandler(){
         },
         sendRequest(){

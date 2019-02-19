@@ -1,8 +1,8 @@
 #if swift(>=4.0)
-@objcMembers public class EnNavigationRequests: ENNavigationAPIRequests {
+@objcMembers public class EnNavigationRequests: EnNavigationAPIRequests {
 
     public override func registerNavigateRequestHandler(handler:  @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
-        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: ENNavigationAPI.kRequestNavigate,
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: EnNavigationAPI.kRequestNavigate,
     reqClass: ErnRoute.self, 
     respClass: None.self,
     requestCompletionHandler: handler)
@@ -19,7 +19,7 @@
 
     public override func navigate(route: ErnRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
         let requestProcessor = ElectrodeRequestProcessor<ErnRoute, None, Any>(
-            requestName: ENNavigationAPI.kRequestNavigate,
+            requestName: EnNavigationAPI.kRequestNavigate,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,
@@ -29,10 +29,10 @@
     }
 }
 #else
-public class EnNavigationRequests: ENNavigationAPIRequests {
+public class EnNavigationRequests: EnNavigationAPIRequests {
 
     public override func registerNavigateRequestHandler(handler:  @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
-        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: ENNavigationAPI.kRequestNavigate,
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: EnNavigationAPI.kRequestNavigate,
     reqClass: ErnRoute.self, 
     respClass: None.self,
     requestCompletionHandler: handler)
@@ -49,7 +49,7 @@ public class EnNavigationRequests: ENNavigationAPIRequests {
 
     public override func navigate(route: ErnRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
         let requestProcessor = ElectrodeRequestProcessor<ErnRoute, None, Any>(
-            requestName: ENNavigationAPI.kRequestNavigate,
+            requestName: EnNavigationAPI.kRequestNavigate,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,

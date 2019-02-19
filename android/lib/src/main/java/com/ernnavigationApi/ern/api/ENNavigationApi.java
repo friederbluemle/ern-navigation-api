@@ -25,14 +25,14 @@ import java.util.UUID;
 
 import com.ernnavigationApi.ern.model.ErnRoute;
 
-public final class ENNavigationApi {
+public final class EnNavigationApi {
     private static final Requests REQUESTS;
 
     static {
-        REQUESTS = new ENNavigationRequests();
+        REQUESTS = new EnNavigationRequests();
     }
 
-    private ENNavigationApi() {
+    private EnNavigationApi() {
     }
 
     @NonNull

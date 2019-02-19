@@ -1,7 +1,7 @@
 import { electrodeBridge } from 'react-native-electrode-bridge';
-import ENNavigationRequests from './ENNavigationRequests';
+import EnNavigationRequests from './EnNavigationRequests';
 
-const REQUESTS = new ENNavigationRequests(electrodeBridge);
+const REQUESTS = new EnNavigationRequests(electrodeBridge);
 
 export function requests() {
     return REQUESTS;

@@ -1,7 +1,7 @@
 // @flow
 
 
-export default class ENNavigationRequests {
+export default class EnNavigationRequests {
     constructor(bridge) {
      this._bridge = bridge;
     }

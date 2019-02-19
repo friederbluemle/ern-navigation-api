@@ -11,7 +11,7 @@
     "/navigate": {
       "post": {
         "tags": [
-          "ENNavigation"
+          "EnNavigation"
         ],
         "operationId": "navigate",
         "parameters": [

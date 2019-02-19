@@ -1,16 +1,16 @@
 #if swift(>=4.0)
-@objcMembers public class ENNavigationAPI: NSObject  {
+@objcMembers public class EnNavigationAPI: NSObject  {
 
     static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
 
 
-    public lazy var requests: ENNavigationAPIRequests = {
-        return ENNavigationRequests()
+    public lazy var requests: EnNavigationAPIRequests = {
+        return EnNavigationRequests()
     }()
 }
 
 
-@objcMembers public class ENNavigationAPIRequests: NSObject {
+@objcMembers public class EnNavigationAPIRequests: NSObject {
     public func registerNavigateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
         assertionFailure("should override")
         return UUID()
@@ -29,18 +29,18 @@
 
 }
 #else
-public class ENNavigationAPI: NSObject  {
+public class EnNavigationAPI: NSObject  {
 
     static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
 
 
-    public lazy var requests: ENNavigationAPIRequests = {
-        return ENNavigationRequests()
+    public lazy var requests: EnNavigationAPIRequests = {
+        return EnNavigationRequests()
     }()
 }
 
 
-public class ENNavigationAPIRequests: NSObject {
+public class EnNavigationAPIRequests: NSObject {
     public func registerNavigateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
         assertionFailure("should override")
         return UUID()
