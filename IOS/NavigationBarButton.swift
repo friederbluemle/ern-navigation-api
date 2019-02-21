@@ -1,5 +1,5 @@
 #if swift(>=4.0)
-@objcMembers public class NavBarButton: ElectrodeObject, Bridgeable {
+@objcMembers public class NavigationBarButton: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
@@ -36,7 +36,7 @@
         if let name = dictionary["name"] as? String  {
                   self.name = name
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [name] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [name] ")
             self.name = dictionary["name"] as! String
         }
 
@@ -45,7 +45,7 @@
         if let identifier = dictionary["identifier"] as? String  {
                   self.identifier = identifier
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [identifier] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [identifier] ")
             self.identifier = dictionary["identifier"] as! String
         }
 
@@ -54,7 +54,7 @@
         if let orientation = dictionary["orientation"] as? String  {
                   self.orientation = orientation
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [orientation] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [orientation] ")
             self.orientation = dictionary["orientation"] as! String
         }
 
@@ -76,7 +76,7 @@ dict["orientation"] =  self.orientation
 }
 #else
 
-public class NavBarButton: ElectrodeObject, Bridgeable {
+public class NavigationBarButton: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
@@ -113,7 +113,7 @@ public class NavBarButton: ElectrodeObject, Bridgeable {
         if let name = dictionary["name"] as? String  {
                   self.name = name
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [name] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [name] ")
             self.name = dictionary["name"] as! String
         }
 
@@ -122,7 +122,7 @@ public class NavBarButton: ElectrodeObject, Bridgeable {
         if let identifier = dictionary["identifier"] as? String  {
                   self.identifier = identifier
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [identifier] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [identifier] ")
             self.identifier = dictionary["identifier"] as! String
         }
 
@@ -131,7 +131,7 @@ public class NavBarButton: ElectrodeObject, Bridgeable {
         if let orientation = dictionary["orientation"] as? String  {
                   self.orientation = orientation
         } else {
-            assertionFailure("\(NavBarButton.tag) missing one or more required properties [orientation] ")
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [orientation] ")
             self.orientation = dictionary["orientation"] as! String
         }
 

@@ -24,25 +24,25 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
-public class NavBarButton implements Parcelable, Bridgeable {
+public class NavigationBarButton implements Parcelable, Bridgeable {
 
     private String name;
     private String identifier;
     private String orientation;
 
-    private NavBarButton() {}
+    private NavigationBarButton() {}
 
-    private NavBarButton(Builder builder) {
+    private NavigationBarButton(Builder builder) {
         this.name = builder.name;
         this.identifier = builder.identifier;
         this.orientation = builder.orientation;
     }
 
-    private NavBarButton(Parcel in) {
+    private NavigationBarButton(Parcel in) {
         this(in.readBundle());
     }
 
-    public NavBarButton(@NonNull Bundle bundle) {
+    public NavigationBarButton(@NonNull Bundle bundle) {
         if(!bundle.containsKey("name")){
             throw new IllegalArgumentException("name property is required");
         }
@@ -60,15 +60,15 @@ public class NavBarButton implements Parcelable, Bridgeable {
         this.orientation = bundle.getString("orientation");
     }
 
-    public static final Creator<NavBarButton> CREATOR = new Creator<NavBarButton>() {
+    public static final Creator<NavigationBarButton> CREATOR = new Creator<NavigationBarButton>() {
         @Override
-        public NavBarButton createFromParcel(Parcel in) {
-            return new NavBarButton(in);
+        public NavigationBarButton createFromParcel(Parcel in) {
+            return new NavigationBarButton(in);
         }
 
         @Override
-        public NavBarButton[] newArray(int size) {
-            return new NavBarButton[size];
+        public NavigationBarButton[] newArray(int size) {
+            return new NavigationBarButton[size];
         }
     };
 
@@ -145,8 +145,8 @@ public class NavBarButton implements Parcelable, Bridgeable {
 
 
         @NonNull
-        public NavBarButton build() {
-            return new NavBarButton(this);
+        public NavigationBarButton build() {
+            return new NavigationBarButton(this);
         }
     }
 }

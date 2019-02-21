@@ -1,5 +1,5 @@
 #if swift(>=4.0)
-@objcMembers public class NavBar: ElectrodeObject, Bridgeable {
+@objcMembers public class NavigationBar: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
@@ -10,9 +10,9 @@
     /**
      Right button properties
      */
-    public let buttons: [NavBarButton]?
+    public let buttons: [NavigationBarButton]?
 
-    public init(title: String, buttons: [NavBarButton]?) {
+    public init(title: String, buttons: [NavigationBarButton]?) {
         self.title = title
         self.buttons = buttons
         super.init()
@@ -30,14 +30,14 @@
         if let title = dictionary["title"] as? String  {
                   self.title = title
         } else {
-            assertionFailure("\(NavBar.tag) missing one or more required properties [title] ")
+            assertionFailure("\(NavigationBar.tag) missing one or more required properties [title] ")
             self.title = dictionary["title"] as! String
         }
 
          
 
-        if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: Array<Any>.self, itemType: NavBarButton.self),
-           let buttonsList = validButtons as? [NavBarButton] {
+        if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: Array<Any>.self, itemType: NavigationBarButton.self),
+           let buttonsList = validButtons as? [NavigationBarButton] {
             self.buttons = buttonsList
         } else {
             self.buttons = nil
@@ -60,7 +60,7 @@
 }
 #else
 
-public class NavBar: ElectrodeObject, Bridgeable {
+public class NavigationBar: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
@@ -71,9 +71,9 @@ public class NavBar: ElectrodeObject, Bridgeable {
     /**
      Right button properties
      */
-    public let buttons: [NavBarButton]?
+    public let buttons: [NavigationBarButton]?
 
-    public init(title: String, buttons: [NavBarButton]?) {
+    public init(title: String, buttons: [NavigationBarButton]?) {
         self.title = title
         self.buttons = buttons
         super.init()
@@ -91,14 +91,14 @@ public class NavBar: ElectrodeObject, Bridgeable {
         if let title = dictionary["title"] as? String  {
                   self.title = title
         } else {
-            assertionFailure("\(NavBar.tag) missing one or more required properties [title] ")
+            assertionFailure("\(NavigationBar.tag) missing one or more required properties [title] ")
             self.title = dictionary["title"] as! String
         }
 
          
 
-        if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: Array<Any>.self, itemType: NavBarButton.self),
-           let buttonsList = validButtons as? [NavBarButton] {
+        if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: Array<Any>.self, itemType: NavigationBarButton.self),
+           let buttonsList = validButtons as? [NavigationBarButton] {
             self.buttons = buttonsList
         } else {
             self.buttons = nil

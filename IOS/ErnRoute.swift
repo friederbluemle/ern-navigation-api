@@ -11,19 +11,19 @@
      Optional Payload (respresented as JSON String) needed by the screen you are trying to navigate to.
      */
     public let jsonPayload: String?
-    public let navBar: NavBar?
+    public let navigationBar: NavigationBar?
 
-    public init(path: String, jsonPayload: String?, navBar: NavBar?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?) {
         self.path = path
         self.jsonPayload = jsonPayload
-        self.navBar = navBar
+        self.navigationBar = navigationBar
         super.init()
     }
 
     public override init() {
         self.path = String()
         self.jsonPayload = nil
-        self.navBar = nil
+        self.navigationBar = nil
         super.init()
     }
 
@@ -47,10 +47,10 @@
         }
         
 
-        if let navBarDict = dictionary["navBar"] as? [AnyHashable: Any] {
-            self.navBar = NavBar(dictionary: navBarDict)
+        if let navigationBarDict = dictionary["navigationBar"] as? [AnyHashable: Any] {
+            self.navigationBar = NavigationBar(dictionary: navigationBarDict)
         } else {
-            self.navBar = nil
+            self.navigationBar = nil
         }
         
         super.init(dictionary: dictionary)
@@ -65,8 +65,8 @@
         if let nonNullJsonPayload = self.jsonPayload {
                 dict["jsonPayload"] = nonNullJsonPayload
         }
-        if let nonNullNavBar = self.navBar {
-                dict["navBar"] = nonNullNavBar.toDictionary()
+        if let nonNullNavigationBar = self.navigationBar {
+                dict["navigationBar"] = nonNullNavigationBar.toDictionary()
         }
         return dict as NSDictionary
     }
@@ -85,19 +85,19 @@ public class ErnRoute: ElectrodeObject, Bridgeable {
      Optional Payload (respresented as JSON String) needed by the screen you are trying to navigate to.
      */
     public let jsonPayload: String?
-    public let navBar: NavBar?
+    public let navigationBar: NavigationBar?
 
-    public init(path: String, jsonPayload: String?, navBar: NavBar?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?) {
         self.path = path
         self.jsonPayload = jsonPayload
-        self.navBar = navBar
+        self.navigationBar = navigationBar
         super.init()
     }
 
     public override init() {
         self.path = String()
         self.jsonPayload = nil
-        self.navBar = nil
+        self.navigationBar = nil
         super.init()
     }
 
@@ -121,10 +121,10 @@ public class ErnRoute: ElectrodeObject, Bridgeable {
         }
         
 
-        if let navBarDict = dictionary["navBar"] as? [AnyHashable: Any] {
-            self.navBar = NavBar(dictionary: navBarDict)
+        if let navigationBarDict = dictionary["navigationBar"] as? [AnyHashable: Any] {
+            self.navigationBar = NavigationBar(dictionary: navigationBarDict)
         } else {
-            self.navBar = nil
+            self.navigationBar = nil
         }
         
         super.init(dictionary: dictionary)
@@ -139,8 +139,8 @@ public class ErnRoute: ElectrodeObject, Bridgeable {
         if let nonNullJsonPayload = self.jsonPayload {
                 dict["jsonPayload"] = nonNullJsonPayload
         }
-        if let nonNullNavBar = self.navBar {
-                dict["navBar"] = nonNullNavBar.toDictionary()
+        if let nonNullNavigationBar = self.navigationBar {
+                dict["navigationBar"] = nonNullNavigationBar.toDictionary()
         }
         return dict as NSDictionary
     }

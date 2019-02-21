@@ -24,40 +24,40 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
-public class NavBar implements Parcelable, Bridgeable {
+public class NavigationBar implements Parcelable, Bridgeable {
 
     private String title;
-    private List<NavBarButton> buttons;
+    private List<NavigationBarButton> buttons;
 
-    private NavBar() {}
+    private NavigationBar() {}
 
-    private NavBar(Builder builder) {
+    private NavigationBar(Builder builder) {
         this.title = builder.title;
         this.buttons = builder.buttons;
     }
 
-    private NavBar(Parcel in) {
+    private NavigationBar(Parcel in) {
         this(in.readBundle());
     }
 
-    public NavBar(@NonNull Bundle bundle) {
+    public NavigationBar(@NonNull Bundle bundle) {
         if(!bundle.containsKey("title")){
             throw new IllegalArgumentException("title property is required");
         }
 
         this.title = bundle.getString("title");
-        this.buttons = bundle.containsKey("buttons") ? getList(bundle.getParcelableArray("buttons"), NavBarButton.class) : null;
+        this.buttons = bundle.containsKey("buttons") ? getList(bundle.getParcelableArray("buttons"), NavigationBarButton.class) : null;
     }
 
-    public static final Creator<NavBar> CREATOR = new Creator<NavBar>() {
+    public static final Creator<NavigationBar> CREATOR = new Creator<NavigationBar>() {
         @Override
-        public NavBar createFromParcel(Parcel in) {
-            return new NavBar(in);
+        public NavigationBar createFromParcel(Parcel in) {
+            return new NavigationBar(in);
         }
 
         @Override
-        public NavBar[] newArray(int size) {
-            return new NavBar[size];
+        public NavigationBar[] newArray(int size) {
+            return new NavigationBar[size];
         }
     };
 
@@ -74,10 +74,10 @@ public class NavBar implements Parcelable, Bridgeable {
     /**
     * Right button properties
     *
-    * @return List<NavBarButton>
+    * @return List<NavigationBarButton>
     */
     @Nullable
-    public List<NavBarButton> getButtons() {
+    public List<NavigationBarButton> getButtons() {
         return buttons;
     }
 
@@ -113,21 +113,21 @@ public class NavBar implements Parcelable, Bridgeable {
 
     public static class Builder {
         private final String title;
-        private List<NavBarButton> buttons;
+        private List<NavigationBarButton> buttons;
 
         public Builder(@NonNull String title) {
             this.title = title;
         }
 
         @NonNull
-        public Builder buttons(@Nullable List<NavBarButton> buttons) {
+        public Builder buttons(@Nullable List<NavigationBarButton> buttons) {
             this.buttons = buttons;
             return this;
         }
 
         @NonNull
-        public NavBar build() {
-            return new NavBar(this);
+        public NavigationBar build() {
+            return new NavigationBar(this);
         }
     }
 }

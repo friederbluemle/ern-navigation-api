@@ -28,14 +28,14 @@ public class ErnRoute implements Parcelable, Bridgeable {
 
     private String path;
     private String jsonPayload;
-    private NavBar navBar;
+    private NavigationBar navigationBar;
 
     private ErnRoute() {}
 
     private ErnRoute(Builder builder) {
         this.path = builder.path;
         this.jsonPayload = builder.jsonPayload;
-        this.navBar = builder.navBar;
+        this.navigationBar = builder.navigationBar;
     }
 
     private ErnRoute(Parcel in) {
@@ -49,7 +49,7 @@ public class ErnRoute implements Parcelable, Bridgeable {
 
         this.path = bundle.getString("path");
         this.jsonPayload = bundle.getString("jsonPayload");
-        this.navBar = bundle.containsKey("navBar") ? new NavBar(bundle.getBundle("navBar")) : null;
+        this.navigationBar = bundle.containsKey("navigationBar") ? new NavigationBar(bundle.getBundle("navigationBar")) : null;
     }
 
     public static final Creator<ErnRoute> CREATOR = new Creator<ErnRoute>() {
@@ -85,8 +85,8 @@ public class ErnRoute implements Parcelable, Bridgeable {
     }
 
     @Nullable
-    public NavBar getNavBar() {
-        return navBar;
+    public NavigationBar getNavigationBar() {
+        return navigationBar;
     }
 
 
@@ -108,8 +108,8 @@ public class ErnRoute implements Parcelable, Bridgeable {
         if(jsonPayload != null) {
             bundle.putString("jsonPayload", this.jsonPayload );
         }
-        if(this.navBar != null) {
-            bundle.putBundle("navBar", this.navBar.toBundle());
+        if(this.navigationBar != null) {
+            bundle.putBundle("navigationBar", this.navigationBar.toBundle());
         }
         return bundle;
     }
@@ -119,14 +119,14 @@ public class ErnRoute implements Parcelable, Bridgeable {
         return "{"
         + "path:" + (path != null ? "\"" + path + "\"" : null)+ ","
         + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)+ ","
-        + "navBar:" + (navBar != null ? navBar.toString() : null)
+        + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null)
         + "}";
     }
 
     public static class Builder {
         private final String path;
         private String jsonPayload;
-        private NavBar navBar;
+        private NavigationBar navigationBar;
 
         public Builder(@NonNull String path) {
             this.path = path;
@@ -138,8 +138,8 @@ public class ErnRoute implements Parcelable, Bridgeable {
             return this;
         }
         @NonNull
-        public Builder navBar(@Nullable NavBar navBar) {
-            this.navBar = navBar;
+        public Builder navigationBar(@Nullable NavigationBar navigationBar) {
+            this.navigationBar = navigationBar;
             return this;
         }
 
