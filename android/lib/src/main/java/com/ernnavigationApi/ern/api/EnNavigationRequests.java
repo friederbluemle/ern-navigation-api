@@ -21,6 +21,7 @@ import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeResponseListe
 import com.walmartlabs.electrode.reactnative.bridge.None;
 import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerProcessor;
 import com.walmartlabs.electrode.reactnative.bridge.RequestProcessor;
+import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerHandle;
 import java.util.*;
 import com.ernnavigationApi.ern.model.ErnRoute;
 
@@ -30,8 +31,8 @@ final class EnNavigationRequests implements EnNavigationApi.Requests {
 
 
     @Override
-    public void registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler) {
-        new RequestHandlerProcessor<>(REQUEST_NAVIGATE, ErnRoute.class, None.class, handler).execute();
+    public RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_NAVIGATE, ErnRoute.class, None.class, handler).execute();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------

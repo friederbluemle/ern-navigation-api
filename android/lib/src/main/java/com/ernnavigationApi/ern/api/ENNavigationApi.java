@@ -20,6 +20,7 @@ import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeEvent;
 import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeRequestHandler;
 import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeResponseListener;
 import com.walmartlabs.electrode.reactnative.bridge.None;
+import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerHandle;
 import java.util.*;
 import java.util.UUID;
 
@@ -46,7 +47,7 @@ public final class EnNavigationApi {
         String REQUEST_NAVIGATE = "com.ernnavigationApi.ern.api.request.navigate";
 
 
-        void registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+        RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
 
         void navigate(ErnRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
