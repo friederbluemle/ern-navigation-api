@@ -24,10 +24,43 @@ describe('EnNavigationApi', function(){
   });
 
 
+    describe('back', function() {
+      it('should send request back successfully', ()=> {
+        //uncomment below and update the code to test back
+        //return requests.back(route: any).then(response=> {
+        //  if (error) throw error;
+        //  expect(response).to.be();
+        //});
+
+      });
+    });
+
+    describe('finish', function() {
+      it('should send request finish successfully', ()=> {
+        //uncomment below and update the code to test finish
+        //return requests.finish(opts: any).then(response=> {
+        //  if (error) throw error;
+        //  expect(response).to.be();
+        //});
+
+      });
+    });
+
     describe('navigate', function() {
       it('should send request navigate successfully', ()=> {
         //uncomment below and update the code to test navigate
         //return requests.navigate(route: any).then(response=> {
+        //  if (error) throw error;
+        //  expect(response).to.be();
+        //});
+
+      });
+    });
+
+    describe('update', function() {
+      it('should send request update successfully', ()=> {
+        //uncomment below and update the code to test update
+        //return requests.update(updatedRoute: any).then(response=> {
         //  if (error) throw error;
         //  expect(response).to.be();
         //});
