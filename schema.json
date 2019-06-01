@@ -26,6 +26,63 @@
           }
         ]
       }
+    },
+    "/update": {
+      "post": {
+        "tags": [
+          "EnNavigation"
+        ],
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "updatedRoute",
+            "in": "body",
+            "description": "Updated route object. This API expectes that the path of the update call is unchanged from the last navigate call. It is likely that the native implementation will reject your update call if the path is different from the last navigate call.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ErnRoute"
+            }
+          }
+        ]
+      }
+    },
+    "/finish": {
+      "post": {
+        "tags": [
+          "EnNavigation"
+        ],
+        "operationId": "finish",
+        "parameters": [
+          {
+            "name": "finalPayload",
+            "in": "body",
+            "description": "Optional json string payload to pass when a flow is completed. Use this to pass in any info needed by the RN view host on the native side",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/back": {
+      "post": {
+        "tags": [
+          "EnNavigation"
+        ],
+        "operationId": "back",
+        "parameters": [
+          {
+            "name": "route",
+            "in": "body",
+            "description": "Route object that details where to navigate next. Use this when you want to go back to a previous screen, it could be any previous screen in a given flow. If the given route is not found on the stack, native layer may push a new screen on top.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ErnRoute"
+            }
+          }
+        ]
+      }
     }
   },
   "definitions": {

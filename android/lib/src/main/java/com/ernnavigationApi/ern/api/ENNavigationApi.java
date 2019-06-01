@@ -44,12 +44,27 @@ public final class EnNavigationApi {
 
 
     public interface Requests {
+        String REQUEST_BACK = "com.ernnavigationApi.ern.api.request.back";
+        String REQUEST_FINISH = "com.ernnavigationApi.ern.api.request.finish";
         String REQUEST_NAVIGATE = "com.ernnavigationApi.ern.api.request.navigate";
+        String REQUEST_UPDATE = "com.ernnavigationApi.ern.api.request.update";
 
+
+        RequestHandlerHandle registerBackRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+
+        RequestHandlerHandle registerFinishRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<String, None> handler);
 
         RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
 
+        RequestHandlerHandle registerUpdateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+
+        void back(ErnRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+
+        void finish(String finalPayload, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+
         void navigate(ErnRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+
+        void update(ErnRoute updatedRoute, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
     }
 }

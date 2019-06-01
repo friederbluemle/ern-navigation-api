@@ -31,14 +31,41 @@ final class EnNavigationRequests implements EnNavigationApi.Requests {
 
 
     @Override
+    public RequestHandlerHandle registerBackRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_BACK, ErnRoute.class, None.class, handler).execute();
+    }
+
+    @Override
+    public RequestHandlerHandle registerFinishRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<String, None> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_FINISH, String.class, None.class, handler).execute();
+    }
+
+    @Override
     public RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler) {
         return new RequestHandlerProcessor<>(REQUEST_NAVIGATE, ErnRoute.class, None.class, handler).execute();
+    }
+
+    @Override
+    public RequestHandlerHandle registerUpdateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_UPDATE, ErnRoute.class, None.class, handler).execute();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------
 
     @Override
+    public void back(ErnRoute route,@NonNull final ElectrodeBridgeResponseListener<None> responseListener) {
+        new RequestProcessor<>(REQUEST_BACK,  route, None.class, responseListener).execute();
+    }
+    @Override
+    public void finish(String finalPayload,@NonNull final ElectrodeBridgeResponseListener<None> responseListener) {
+        new RequestProcessor<>(REQUEST_FINISH,  finalPayload, None.class, responseListener).execute();
+    }
+    @Override
     public void navigate(ErnRoute route,@NonNull final ElectrodeBridgeResponseListener<None> responseListener) {
         new RequestProcessor<>(REQUEST_NAVIGATE,  route, None.class, responseListener).execute();
+    }
+    @Override
+    public void update(ErnRoute updatedRoute,@NonNull final ElectrodeBridgeResponseListener<None> responseListener) {
+        new RequestProcessor<>(REQUEST_UPDATE,  updatedRoute, None.class, responseListener).execute();
     }
 }
