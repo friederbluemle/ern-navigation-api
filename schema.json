@@ -144,7 +144,7 @@
           "type": "boolean",
           "description" : "Default to false. If set to true the button will be disabled(non-clickable)"
         },
-        "accessibilityLabel" : {
+        "adaLabel" : {
           "type": "string",
           "description": "Accessibility label"
         }

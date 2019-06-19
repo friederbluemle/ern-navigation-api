@@ -26,15 +26,15 @@
     /**
      Accessibility label
      */
-    public let accessibilityLabel: String?
+    public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, accessibilityLabel: String?) {
+    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
         self.location = location
         self.disabled = disabled
-        self.accessibilityLabel = accessibilityLabel
+        self.adaLabel = adaLabel
         super.init()
     }
 
@@ -44,7 +44,7 @@
         self.id = nil
         self.location = nil
         self.disabled = nil
-        self.accessibilityLabel = nil
+        self.adaLabel = nil
         super.init()
     }
 
@@ -87,10 +87,10 @@
         }
         
 
-        if let accessibilityLabel = dictionary["accessibilityLabel"] as? String {
-            self.accessibilityLabel = accessibilityLabel
+        if let adaLabel = dictionary["adaLabel"] as? String {
+            self.adaLabel = adaLabel
         } else {
-            self.accessibilityLabel = nil
+            self.adaLabel = nil
         }
         
         super.init(dictionary: dictionary)
@@ -116,8 +116,8 @@
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled
         }
-        if let nonNullAccessibilityLabel = self.accessibilityLabel {
-                dict["accessibilityLabel"] = nonNullAccessibilityLabel
+        if let nonNullAdaLabel = self.adaLabel {
+                dict["adaLabel"] = nonNullAdaLabel
         }
         return dict as NSDictionary
     }
@@ -151,15 +151,15 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
     /**
      Accessibility label
      */
-    public let accessibilityLabel: String?
+    public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, accessibilityLabel: String?) {
+    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
         self.location = location
         self.disabled = disabled
-        self.accessibilityLabel = accessibilityLabel
+        self.adaLabel = adaLabel
         super.init()
     }
 
@@ -169,7 +169,7 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
         self.id = nil
         self.location = nil
         self.disabled = nil
-        self.accessibilityLabel = nil
+        self.adaLabel = nil
         super.init()
     }
 
@@ -212,10 +212,10 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
         }
         
 
-        if let accessibilityLabel = dictionary["accessibilityLabel"] as? String {
-            self.accessibilityLabel = accessibilityLabel
+        if let adaLabel = dictionary["adaLabel"] as? String {
+            self.adaLabel = adaLabel
         } else {
-            self.accessibilityLabel = nil
+            self.adaLabel = nil
         }
         
         super.init(dictionary: dictionary)
@@ -241,8 +241,8 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled
         }
-        if let nonNullAccessibilityLabel = self.accessibilityLabel {
-                dict["accessibilityLabel"] = nonNullAccessibilityLabel
+        if let nonNullAdaLabel = self.adaLabel {
+                dict["adaLabel"] = nonNullAdaLabel
         }
         return dict as NSDictionary
     }

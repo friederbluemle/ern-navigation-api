@@ -31,7 +31,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     private String id;
     private String location;
     private Boolean disabled;
-    private String accessibilityLabel;
+    private String adaLabel;
 
     private NavigationBarButton() {}
 
@@ -41,7 +41,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         this.id = builder.id;
         this.location = builder.location;
         this.disabled = builder.disabled;
-        this.accessibilityLabel = builder.accessibilityLabel;
+        this.adaLabel = builder.adaLabel;
     }
 
     private NavigationBarButton(Parcel in) {
@@ -54,7 +54,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         this.id = bundle.getString("id");
         this.location = bundle.getString("location");
         this.disabled = bundle.containsKey("disabled") ? bundle.getBoolean("disabled") : null;
-        this.accessibilityLabel = bundle.getString("accessibilityLabel");
+        this.adaLabel = bundle.getString("adaLabel");
     }
 
     public static final Creator<NavigationBarButton> CREATOR = new Creator<NavigationBarButton>() {
@@ -125,8 +125,8 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     * @return String
     */
     @Nullable
-    public String getAccessibilityLabel() {
-        return accessibilityLabel;
+    public String getAdaLabel() {
+        return adaLabel;
     }
 
 
@@ -159,8 +159,8 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         if(this.disabled != null) {
             bundle.putBoolean("disabled", this.disabled);
         }
-        if(accessibilityLabel != null) {
-            bundle.putString("accessibilityLabel", this.accessibilityLabel );
+        if(adaLabel != null) {
+            bundle.putString("adaLabel", this.adaLabel );
         }
         return bundle;
     }
@@ -173,7 +173,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         + "id:" + (id != null ? "\"" + id + "\"" : null)+ ","
         + "location:" + (location != null ? "\"" + location + "\"" : null)+ ","
         + "disabled:" + disabled+ ","
-        + "accessibilityLabel:" + (accessibilityLabel != null ? "\"" + accessibilityLabel + "\"" : null)
+        + "adaLabel:" + (adaLabel != null ? "\"" + adaLabel + "\"" : null)
         + "}";
     }
 
@@ -183,7 +183,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         private String id;
         private String location;
         private Boolean disabled;
-        private String accessibilityLabel;
+        private String adaLabel;
 
         public Builder() {
         }
@@ -214,8 +214,8 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
             return this;
         }
         @NonNull
-        public Builder accessibilityLabel(@Nullable String accessibilityLabel) {
-            this.accessibilityLabel = accessibilityLabel;
+        public Builder adaLabel(@Nullable String adaLabel) {
+            this.adaLabel = adaLabel;
             return this;
         }
 
