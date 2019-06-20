@@ -14,11 +14,11 @@
     /**
      Id of the button, this namespace will be used as an identifier when a button click event is emitted.
      */
-    public let id: String?
+    public let id: String
     /**
      Allowed enums: left, right
      */
-    public let location: String?
+    public let location: String
     /**
      Default to false. If set to true the button will be disabled(non-clickable)
      */
@@ -28,7 +28,7 @@
      */
     public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, adaLabel: String?) {
+    public init(title: String?, icon: String?, id: String, location: String, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
@@ -39,17 +39,35 @@
     }
 
     public override init() {
+        self.id = String()
+        self.location = String()
         self.title = nil
         self.icon = nil
-        self.id = nil
-        self.location = nil
         self.disabled = nil
         self.adaLabel = nil
         super.init()
     }
 
     required public init(dictionary:[AnyHashable:Any]) {
+        
 
+        if let id = dictionary["id"] as? String  {
+                  self.id = id
+        } else {
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id] ")
+            self.id = dictionary["id"] as! String
+        }
+
+                 
+
+        if let location = dictionary["location"] as? String  {
+                  self.location = location
+        } else {
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [location] ")
+            self.location = dictionary["location"] as! String
+        }
+
+         
 
 
         if let title = dictionary["title"] as? String {
@@ -63,20 +81,6 @@
             self.icon = icon
         } else {
             self.icon = nil
-        }
-        
-
-        if let id = dictionary["id"] as? String {
-            self.id = id
-        } else {
-            self.id = nil
-        }
-        
-
-        if let location = dictionary["location"] as? String {
-            self.location = location
-        } else {
-            self.location = nil
         }
         
 
@@ -100,18 +104,14 @@
 
          var dict = [:] as [AnyHashable : Any]
 
-         
+         dict["id"] =  self.id
+dict["location"] =  self.location
+
         if let nonNullTitle = self.title {
                 dict["title"] = nonNullTitle
         }
         if let nonNullIcon = self.icon {
                 dict["icon"] = nonNullIcon
-        }
-        if let nonNullId = self.id {
-                dict["id"] = nonNullId
-        }
-        if let nonNullLocation = self.location {
-                dict["location"] = nonNullLocation
         }
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled
@@ -139,11 +139,11 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
     /**
      Id of the button, this namespace will be used as an identifier when a button click event is emitted.
      */
-    public let id: String?
+    public let id: String
     /**
      Allowed enums: left, right
      */
-    public let location: String?
+    public let location: String
     /**
      Default to false. If set to true the button will be disabled(non-clickable)
      */
@@ -153,7 +153,7 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
      */
     public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String?, location: String?, disabled: Bool?, adaLabel: String?) {
+    public init(title: String?, icon: String?, id: String, location: String, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
@@ -164,17 +164,35 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
+        self.id = String()
+        self.location = String()
         self.title = nil
         self.icon = nil
-        self.id = nil
-        self.location = nil
         self.disabled = nil
         self.adaLabel = nil
         super.init()
     }
 
     required public init(dictionary:[AnyHashable:Any]) {
+        
 
+        if let id = dictionary["id"] as? String  {
+                  self.id = id
+        } else {
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id] ")
+            self.id = dictionary["id"] as! String
+        }
+
+                 
+
+        if let location = dictionary["location"] as? String  {
+                  self.location = location
+        } else {
+            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [location] ")
+            self.location = dictionary["location"] as! String
+        }
+
+         
 
 
         if let title = dictionary["title"] as? String {
@@ -188,20 +206,6 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
             self.icon = icon
         } else {
             self.icon = nil
-        }
-        
-
-        if let id = dictionary["id"] as? String {
-            self.id = id
-        } else {
-            self.id = nil
-        }
-        
-
-        if let location = dictionary["location"] as? String {
-            self.location = location
-        } else {
-            self.location = nil
         }
         
 
@@ -225,18 +229,14 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
 
          var dict = [:] as [AnyHashable : Any]
 
-         
+         dict["id"] =  self.id
+dict["location"] =  self.location
+
         if let nonNullTitle = self.title {
                 dict["title"] = nonNullTitle
         }
         if let nonNullIcon = self.icon {
                 dict["icon"] = nonNullIcon
-        }
-        if let nonNullId = self.id {
-                dict["id"] = nonNullId
-        }
-        if let nonNullLocation = self.location {
-                dict["location"] = nonNullLocation
         }
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled

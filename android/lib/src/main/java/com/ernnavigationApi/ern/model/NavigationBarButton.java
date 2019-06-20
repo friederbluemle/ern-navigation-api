@@ -49,6 +49,14 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     }
 
     public NavigationBarButton(@NonNull Bundle bundle) {
+        if(!bundle.containsKey("id")){
+            throw new IllegalArgumentException("id property is required");
+        }
+
+        if(!bundle.containsKey("location")){
+            throw new IllegalArgumentException("location property is required");
+        }
+
         this.title = bundle.getString("title");
         this.icon = bundle.getString("icon");
         this.id = bundle.getString("id");
@@ -94,7 +102,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     *
     * @return String
     */
-    @Nullable
+    @NonNull
     public String getId() {
         return id;
     }
@@ -104,7 +112,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     *
     * @return String
     */
-    @Nullable
+    @NonNull
     public String getLocation() {
         return location;
     }
@@ -144,17 +152,13 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     @Override
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
+        bundle.putString("id", this.id);
+        bundle.putString("location", this.location);
         if(title != null) {
             bundle.putString("title", this.title );
         }
         if(icon != null) {
             bundle.putString("icon", this.icon );
-        }
-        if(id != null) {
-            bundle.putString("id", this.id );
-        }
-        if(location != null) {
-            bundle.putString("location", this.location );
         }
         if(this.disabled != null) {
             bundle.putBoolean("disabled", this.disabled);
@@ -178,14 +182,16 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     }
 
     public static class Builder {
+        private final String id;
+        private final String location;
         private String title;
         private String icon;
-        private String id;
-        private String location;
         private Boolean disabled;
         private String adaLabel;
 
-        public Builder() {
+        public Builder(@NonNull String id, @NonNull String location) {
+            this.id = id;
+            this.location = location;
         }
 
         @NonNull
@@ -196,16 +202,6 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         @NonNull
         public Builder icon(@Nullable String icon) {
             this.icon = icon;
-            return this;
-        }
-        @NonNull
-        public Builder id(@Nullable String id) {
-            this.id = id;
-            return this;
-        }
-        @NonNull
-        public Builder location(@Nullable String location) {
-            this.location = location;
             return this;
         }
         @NonNull
