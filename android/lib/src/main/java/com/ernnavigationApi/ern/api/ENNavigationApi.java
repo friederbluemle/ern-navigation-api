@@ -24,7 +24,7 @@ import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerHandle;
 import java.util.*;
 import java.util.UUID;
 
-import com.ernnavigationApi.ern.model.ErnRoute;
+import com.ernnavigationApi.ern.model.ErnNavRoute;
 
 public final class EnNavigationApi {
     private static final Requests REQUESTS;
@@ -66,21 +66,21 @@ public final class EnNavigationApi {
         String REQUEST_UPDATE = "com.ernnavigationApi.ern.api.request.update";
 
 
-        RequestHandlerHandle registerBackRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+        RequestHandlerHandle registerBackRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
         RequestHandlerHandle registerFinishRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<String, None> handler);
 
-        RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+        RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
-        RequestHandlerHandle registerUpdateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnRoute, None> handler);
+        RequestHandlerHandle registerUpdateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
-        void back(ErnRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+        void back(ErnNavRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
         void finish(String finalPayload, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
-        void navigate(ErnRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+        void navigate(ErnNavRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
-        void update(ErnRoute updatedRoute, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+        void update(ErnNavRoute updatedRoute, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
     }
 }

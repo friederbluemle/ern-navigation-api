@@ -24,7 +24,7 @@ import com.walmartlabs.electrode.reactnative.bridge.None;
 import java.util.*;
 import java.util.UUID;
 
-    import com.ernnavigationApi.ern.model.ErnRoute;
+    import com.ernnavigationApi.ern.model.ErnNavRoute;
 
 final class EnNavigationEvents implements EnNavigationApi.Events {
     EnNavigationEvents() {}
