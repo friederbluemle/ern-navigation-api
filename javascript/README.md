@@ -66,6 +66,7 @@ Class | Method |request type | Description
  - [ernnavigationApi.ErnNavRoute](docs/ErnNavRoute.md)
  - [ernnavigationApi.NavigationBar](docs/NavigationBar.md)
  - [ernnavigationApi.NavigationBarButton](docs/NavigationBarButton.md)
+ - [ernnavigationApi.NavigationBarLeftButton](docs/NavigationBarLeftButton.md)
 
 ## Documentation for Authorization
 

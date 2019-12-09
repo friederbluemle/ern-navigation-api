@@ -29,6 +29,7 @@ public class NavigationBar implements Parcelable, Bridgeable {
     private String title;
     private Boolean hide;
     private List<NavigationBarButton> buttons;
+    private NavigationBarLeftButton leftButton;
 
     private NavigationBar() {}
 
@@ -36,6 +37,7 @@ public class NavigationBar implements Parcelable, Bridgeable {
         this.title = builder.title;
         this.hide = builder.hide;
         this.buttons = builder.buttons;
+        this.leftButton = builder.leftButton;
     }
 
     private NavigationBar(Parcel in) {
@@ -50,6 +52,7 @@ public class NavigationBar implements Parcelable, Bridgeable {
         this.title = bundle.getString("title");
         this.hide = bundle.containsKey("hide") ? bundle.getBoolean("hide") : null;
         this.buttons = bundle.containsKey("buttons") ? getList(bundle.getParcelableArray("buttons"), NavigationBarButton.class) : null;
+        this.leftButton = bundle.containsKey("leftButton") ? new NavigationBarLeftButton(bundle.getBundle("leftButton")) : null;
     }
 
     public static final Creator<NavigationBar> CREATOR = new Creator<NavigationBar>() {
@@ -94,6 +97,11 @@ public class NavigationBar implements Parcelable, Bridgeable {
         return buttons;
     }
 
+    @Nullable
+    public NavigationBarLeftButton getLeftButton() {
+        return leftButton;
+    }
+
 
     @Override
     public int describeContents() {
@@ -116,6 +124,9 @@ public class NavigationBar implements Parcelable, Bridgeable {
         if(this.buttons != null) {
             updateBundleWithList(this.buttons, bundle, "buttons");
         }
+        if(this.leftButton != null) {
+            bundle.putBundle("leftButton", this.leftButton.toBundle());
+        }
         return bundle;
     }
 
@@ -124,7 +135,8 @@ public class NavigationBar implements Parcelable, Bridgeable {
         return "{"
         + "title:" + (title != null ? "\"" + title + "\"" : null)+ ","
         + "hide:" + hide+ ","
-        + "buttons:" + (buttons != null ? buttons.toString() : null)
+        + "buttons:" + (buttons != null ? buttons.toString() : null)+ ","
+        + "leftButton:" + (leftButton != null ? leftButton.toString() : null)
         + "}";
     }
 
@@ -132,6 +144,7 @@ public class NavigationBar implements Parcelable, Bridgeable {
         private final String title;
         private Boolean hide;
         private List<NavigationBarButton> buttons;
+        private NavigationBarLeftButton leftButton;
 
         public Builder(@NonNull String title) {
             this.title = title;
@@ -145,6 +158,11 @@ public class NavigationBar implements Parcelable, Bridgeable {
         @NonNull
         public Builder buttons(@Nullable List<NavigationBarButton> buttons) {
             this.buttons = buttons;
+            return this;
+        }
+        @NonNull
+        public Builder leftButton(@Nullable NavigationBarLeftButton leftButton) {
+            this.leftButton = leftButton;
             return this;
         }
 

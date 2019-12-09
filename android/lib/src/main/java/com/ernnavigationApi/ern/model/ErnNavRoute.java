@@ -29,6 +29,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     private String path;
     private String jsonPayload;
     private NavigationBar navigationBar;
+    private Boolean overlay;
 
     private ErnNavRoute() {}
 
@@ -36,6 +37,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         this.path = builder.path;
         this.jsonPayload = builder.jsonPayload;
         this.navigationBar = builder.navigationBar;
+        this.overlay = builder.overlay;
     }
 
     private ErnNavRoute(Parcel in) {
@@ -50,6 +52,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         this.path = bundle.getString("path");
         this.jsonPayload = bundle.getString("jsonPayload");
         this.navigationBar = bundle.containsKey("navigationBar") ? new NavigationBar(bundle.getBundle("navigationBar")) : null;
+        this.overlay = bundle.containsKey("overlay") ? bundle.getBoolean("overlay") : null;
     }
 
     public static final Creator<ErnNavRoute> CREATOR = new Creator<ErnNavRoute>() {
@@ -89,6 +92,16 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         return navigationBar;
     }
 
+    /**
+    * If set to true, the view component would be displayed over a transparent theme. Default value is false.
+    *
+    * @return Boolean
+    */
+    @Nullable
+    public Boolean getOverlay() {
+        return overlay;
+    }
+
 
     @Override
     public int describeContents() {
@@ -111,6 +124,9 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         if(this.navigationBar != null) {
             bundle.putBundle("navigationBar", this.navigationBar.toBundle());
         }
+        if(this.overlay != null) {
+            bundle.putBoolean("overlay", this.overlay);
+        }
         return bundle;
     }
 
@@ -119,7 +135,8 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         return "{"
         + "path:" + (path != null ? "\"" + path + "\"" : null)+ ","
         + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)+ ","
-        + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null)
+        + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null)+ ","
+        + "overlay:" + overlay
         + "}";
     }
 
@@ -127,6 +144,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         private final String path;
         private String jsonPayload;
         private NavigationBar navigationBar;
+        private Boolean overlay;
 
         public Builder(@NonNull String path) {
             this.path = path;
@@ -140,6 +158,11 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         @NonNull
         public Builder navigationBar(@Nullable NavigationBar navigationBar) {
             this.navigationBar = navigationBar;
+            return this;
+        }
+        @NonNull
+        public Builder overlay(@Nullable Boolean overlay) {
+            this.overlay = overlay;
             return this;
         }
 

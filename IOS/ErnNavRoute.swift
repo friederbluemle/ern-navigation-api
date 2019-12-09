@@ -12,11 +12,16 @@
      */
     public let jsonPayload: String?
     public let navigationBar: NavigationBar?
+    /**
+     If set to true, the view component would be displayed over a transparent theme. Default value is false.
+     */
+    public let overlay: Bool?
 
-    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?) {
         self.path = path
         self.jsonPayload = jsonPayload
         self.navigationBar = navigationBar
+        self.overlay = overlay
         super.init()
     }
 
@@ -24,6 +29,7 @@
         self.path = String()
         self.jsonPayload = nil
         self.navigationBar = nil
+        self.overlay = nil
         super.init()
     }
 
@@ -53,6 +59,13 @@
             self.navigationBar = nil
         }
         
+
+        if let overlay = dictionary["overlay"] as? Bool {
+            self.overlay = overlay
+        } else {
+            self.overlay = nil
+        }
+        
         super.init(dictionary: dictionary)
     }
 
@@ -67,6 +80,9 @@
         }
         if let nonNullNavigationBar = self.navigationBar {
                 dict["navigationBar"] = nonNullNavigationBar.toDictionary()
+        }
+        if let nonNullOverlay = self.overlay {
+                dict["overlay"] = nonNullOverlay
         }
         return dict as NSDictionary
     }
@@ -86,11 +102,16 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
      */
     public let jsonPayload: String?
     public let navigationBar: NavigationBar?
+    /**
+     If set to true, the view component would be displayed over a transparent theme. Default value is false.
+     */
+    public let overlay: Bool?
 
-    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?) {
         self.path = path
         self.jsonPayload = jsonPayload
         self.navigationBar = navigationBar
+        self.overlay = overlay
         super.init()
     }
 
@@ -98,6 +119,7 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
         self.path = String()
         self.jsonPayload = nil
         self.navigationBar = nil
+        self.overlay = nil
         super.init()
     }
 
@@ -127,6 +149,13 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
             self.navigationBar = nil
         }
         
+
+        if let overlay = dictionary["overlay"] as? Bool {
+            self.overlay = overlay
+        } else {
+            self.overlay = nil
+        }
+        
         super.init(dictionary: dictionary)
     }
 
@@ -141,6 +170,9 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
         }
         if let nonNullNavigationBar = self.navigationBar {
                 dict["navigationBar"] = nonNullNavigationBar.toDictionary()
+        }
+        if let nonNullOverlay = self.overlay {
+                dict["overlay"] = nonNullOverlay
         }
         return dict as NSDictionary
     }

@@ -1,10 +1,10 @@
 #if swift(>=4.0)
-@objcMembers public class NavigationBarButton: ElectrodeObject, Bridgeable {
+@objcMembers public class NavigationBarLeftButton: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
     /**
-     Button title if any.
+     Button title if any, applied only for iOS.
      */
     public let title: String?
     /**
@@ -12,15 +12,11 @@
      */
     public let icon: String?
     /**
-     Id of the button, this namespace will be used as an identifier when a button click event is emitted.
+     Id of the button, this namespace will be used as an identifier when a button click event is emitted. If included, click will not be handled by native instead an event will be fired for react native to handle the backpress.
      */
-    public let id: String
+    public let id: String?
     /**
-     @Deprecated This is now Deprecated with the introduction of NavigationBarLeftButton. Allowed enums: left, right
-     */
-    public let location: String?
-    /**
-     Default to false. If set to true the button will be disabled(non-clickable)
+     Default to false. If set to true the button will be disabled(non-clickable). Android will remove the left icon indicator
      */
     public let disabled: Bool?
     /**
@@ -28,37 +24,26 @@
      */
     public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String, location: String?, disabled: Bool?, adaLabel: String?) {
+    public init(title: String?, icon: String?, id: String?, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
-        self.location = location
         self.disabled = disabled
         self.adaLabel = adaLabel
         super.init()
     }
 
     public override init() {
-        self.id = String()
         self.title = nil
         self.icon = nil
-        self.location = nil
+        self.id = nil
         self.disabled = nil
         self.adaLabel = nil
         super.init()
     }
 
     required public init(dictionary:[AnyHashable:Any]) {
-        
 
-        if let id = dictionary["id"] as? String  {
-                  self.id = id
-        } else {
-            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id] ")
-            self.id = dictionary["id"] as! String
-        }
-
-         
 
 
         if let title = dictionary["title"] as? String {
@@ -75,10 +60,10 @@
         }
         
 
-        if let location = dictionary["location"] as? String {
-            self.location = location
+        if let id = dictionary["id"] as? String {
+            self.id = id
         } else {
-            self.location = nil
+            self.id = nil
         }
         
 
@@ -102,16 +87,15 @@
 
          var dict = [:] as [AnyHashable : Any]
 
-         dict["id"] =  self.id
-
+         
         if let nonNullTitle = self.title {
                 dict["title"] = nonNullTitle
         }
         if let nonNullIcon = self.icon {
                 dict["icon"] = nonNullIcon
         }
-        if let nonNullLocation = self.location {
-                dict["location"] = nonNullLocation
+        if let nonNullId = self.id {
+                dict["id"] = nonNullId
         }
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled
@@ -124,12 +108,12 @@
 }
 #else
 
-public class NavigationBarButton: ElectrodeObject, Bridgeable {
+public class NavigationBarLeftButton: ElectrodeObject, Bridgeable {
 
     private static let tag = String(describing: type(of: self))
 
     /**
-     Button title if any.
+     Button title if any, applied only for iOS.
      */
     public let title: String?
     /**
@@ -137,15 +121,11 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
      */
     public let icon: String?
     /**
-     Id of the button, this namespace will be used as an identifier when a button click event is emitted.
+     Id of the button, this namespace will be used as an identifier when a button click event is emitted. If included, click will not be handled by native instead an event will be fired for react native to handle the backpress.
      */
-    public let id: String
+    public let id: String?
     /**
-     @Deprecated This is now Deprecated with the introduction of NavigationBarLeftButton. Allowed enums: left, right
-     */
-    public let location: String?
-    /**
-     Default to false. If set to true the button will be disabled(non-clickable)
+     Default to false. If set to true the button will be disabled(non-clickable). Android will remove the left icon indicator
      */
     public let disabled: Bool?
     /**
@@ -153,37 +133,26 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
      */
     public let adaLabel: String?
 
-    public init(title: String?, icon: String?, id: String, location: String?, disabled: Bool?, adaLabel: String?) {
+    public init(title: String?, icon: String?, id: String?, disabled: Bool?, adaLabel: String?) {
         self.title = title
         self.icon = icon
         self.id = id
-        self.location = location
         self.disabled = disabled
         self.adaLabel = adaLabel
         super.init()
     }
 
     public override init() {
-        self.id = String()
         self.title = nil
         self.icon = nil
-        self.location = nil
+        self.id = nil
         self.disabled = nil
         self.adaLabel = nil
         super.init()
     }
 
     required public init(dictionary:[AnyHashable:Any]) {
-        
 
-        if let id = dictionary["id"] as? String  {
-                  self.id = id
-        } else {
-            assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id] ")
-            self.id = dictionary["id"] as! String
-        }
-
-         
 
 
         if let title = dictionary["title"] as? String {
@@ -200,10 +169,10 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
         }
         
 
-        if let location = dictionary["location"] as? String {
-            self.location = location
+        if let id = dictionary["id"] as? String {
+            self.id = id
         } else {
-            self.location = nil
+            self.id = nil
         }
         
 
@@ -227,16 +196,15 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
 
          var dict = [:] as [AnyHashable : Any]
 
-         dict["id"] =  self.id
-
+         
         if let nonNullTitle = self.title {
                 dict["title"] = nonNullTitle
         }
         if let nonNullIcon = self.icon {
                 dict["icon"] = nonNullIcon
         }
-        if let nonNullLocation = self.location {
-                dict["location"] = nonNullLocation
+        if let nonNullId = self.id {
+                dict["id"] = nonNullId
         }
         if let nonNullDisabled = self.disabled {
                 dict["disabled"] = nonNullDisabled
