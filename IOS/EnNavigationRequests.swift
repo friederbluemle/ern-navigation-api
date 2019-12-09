@@ -53,46 +53,46 @@
     //------------------------------------------------------------------------------------------------------------------------------------
 
 
-    public override func back(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func back(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestBack,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
 
-    public override func finish(finalPayload: String, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func finish(finalPayload: String, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<String, None, Any>(
             requestName: EnNavigationAPI.kRequestFinish,
             requestPayload: finalPayload,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
 
-    public override func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestNavigate,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
 
-    public override func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestUpdate,
             requestPayload: updatedRoute,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
@@ -152,13 +152,13 @@ public class EnNavigationRequests: EnNavigationAPIRequests {
       return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
-    public override func back(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func back(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestBack,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
@@ -180,13 +180,13 @@ public class EnNavigationRequests: EnNavigationAPIRequests {
       return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
-    public override func finish(finalPayload: String, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func finish(finalPayload: String, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<String, None, Any>(
             requestName: EnNavigationAPI.kRequestFinish,
             requestPayload: finalPayload,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
@@ -208,13 +208,13 @@ public class EnNavigationRequests: EnNavigationAPIRequests {
       return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
-    public override func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestNavigate,
             requestPayload: route,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
@@ -236,13 +236,13 @@ public class EnNavigationRequests: EnNavigationAPIRequests {
       return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
-    public override func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public override func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         let requestProcessor = ElectrodeRequestProcessor<ErnNavRoute, None, Any>(
             requestName: EnNavigationAPI.kRequestUpdate,
             requestPayload: updatedRoute,
             respClass: None.self,
             responseItemType: nil,
-            responseCompletionHandler: responseCompletionHandler)
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? None, errorMessage) })
 
         requestProcessor.execute()
     }
