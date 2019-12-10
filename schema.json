@@ -116,6 +116,10 @@
         },
         "navigationBar": {
           "$ref": "#/definitions/NavigationBar"
+        },
+        "overlay": {
+          "type": "boolean",
+          "description": "If set to true, the view component would be displayed over a transparent theme. Default value is false."
         }
       },
       "required": [
@@ -138,21 +142,44 @@
         },
         "location": {
           "type": "string",
-          "description": "Allowed enums: left, right"
+          "description": "@Deprecated This is now Deprecated with the introduction of NavigationBarLeftButton. Allowed enums: left, right"
         },
         "disabled": {
           "type": "boolean",
-          "description" : "Default to false. If set to true the button will be disabled(non-clickable)"
+          "description": "Default to false. If set to true the button will be disabled(non-clickable)"
         },
-        "adaLabel" : {
+        "adaLabel": {
           "type": "string",
           "description": "Accessibility label"
         }
       },
       "required": [
-        "id",
-        "location"
+        "id"
       ]
+    },
+    "NavigationBarLeftButton": {
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Button title if any, applied only for iOS."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon resource identifier that can be used find the icon"
+        },
+        "id": {
+          "type": "string",
+          "description": "Id of the button, this namespace will be used as an identifier when a button click event is emitted. If included, click will not be handled by native instead an event will be fired for react native to handle the backpress."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Default to false. If set to true the button will be disabled(non-clickable). Android will remove the left icon indicator"
+        },
+        "adaLabel": {
+          "type": "string",
+          "description": "Accessibility label"
+        }
+      }
     },
     "NavigationBar": {
       "properties": {
@@ -160,9 +187,9 @@
           "type": "string",
           "description": "Title of Nav Bar"
         },
-        "hide" : {
-          "type" : "boolean",
-          "description" : "Use to hide the navigation bar."
+        "hide": {
+          "type": "boolean",
+          "description": "Use to hide the navigation bar."
         },
         "buttons": {
           "type": "array",
@@ -170,6 +197,9 @@
             "$ref": "#/definitions/NavigationBarButton"
           },
           "description": "Right button properties"
+        },
+        "leftButton": {
+          "$ref": "#/definitions/NavigationBarLeftButton"
         }
       },
       "required": [

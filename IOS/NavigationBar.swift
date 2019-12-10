@@ -15,11 +15,13 @@
      Right button properties
      */
     public let buttons: [NavigationBarButton]?
+    public let leftButton: NavigationBarLeftButton?
 
-    public init(title: String, hide: Bool?, buttons: [NavigationBarButton]?) {
+    public init(title: String, hide: Bool?, buttons: [NavigationBarButton]?, leftButton: NavigationBarLeftButton?) {
         self.title = title
         self.hide = hide
         self.buttons = buttons
+        self.leftButton = leftButton
         super.init()
     }
 
@@ -27,6 +29,7 @@
         self.title = String()
         self.hide = nil
         self.buttons = nil
+        self.leftButton = nil
         super.init()
     }
 
@@ -56,6 +59,13 @@
             self.buttons = nil
         }
 
+
+        if let leftButtonDict = dictionary["leftButton"] as? [AnyHashable: Any] {
+            self.leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
+        } else {
+            self.leftButton = nil
+        }
+        
         super.init(dictionary: dictionary)
     }
 
@@ -70,6 +80,9 @@
         }
         if let nonNullButtons = self.buttons {
                 dict["buttons"] = nonNullButtons.map{$0.toDictionary()}
+        }
+        if let nonNullLeftButton = self.leftButton {
+                dict["leftButton"] = nonNullLeftButton.toDictionary()
         }
         return dict as NSDictionary
     }
@@ -92,11 +105,13 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
      Right button properties
      */
     public let buttons: [NavigationBarButton]?
+    public let leftButton: NavigationBarLeftButton?
 
-    public init(title: String, hide: Bool?, buttons: [NavigationBarButton]?) {
+    public init(title: String, hide: Bool?, buttons: [NavigationBarButton]?, leftButton: NavigationBarLeftButton?) {
         self.title = title
         self.hide = hide
         self.buttons = buttons
+        self.leftButton = leftButton
         super.init()
     }
 
@@ -104,6 +119,7 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
         self.title = String()
         self.hide = nil
         self.buttons = nil
+        self.leftButton = nil
         super.init()
     }
 
@@ -133,6 +149,13 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
             self.buttons = nil
         }
 
+
+        if let leftButtonDict = dictionary["leftButton"] as? [AnyHashable: Any] {
+            self.leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
+        } else {
+            self.leftButton = nil
+        }
+        
         super.init(dictionary: dictionary)
     }
 
@@ -147,6 +170,9 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
         }
         if let nonNullButtons = self.buttons {
                 dict["buttons"] = nonNullButtons.map{$0.toDictionary()}
+        }
+        if let nonNullLeftButton = self.leftButton {
+                dict["leftButton"] = nonNullLeftButton.toDictionary()
         }
         return dict as NSDictionary
     }

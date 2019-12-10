@@ -81,19 +81,19 @@
     }
 
 
-    public func back(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func back(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         assertionFailure("should override")
     }
 
-    public func finish(finalPayload: String, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func finish(finalPayload: String, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         assertionFailure("should override")
     }
 
-    public func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         assertionFailure("should override")
     }
 
-    public func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
         assertionFailure("should override")
     }
 
