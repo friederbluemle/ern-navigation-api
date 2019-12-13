@@ -136,6 +136,10 @@
           "type": "string",
           "description": "Icon resource identifier that can be used find the icon"
         },
+        "tint": {
+          "type": "string",
+          "description": "Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal"
+        },
         "id": {
           "type": "string",
           "description": "Id of the button, this namespace will be used as an identifier when a button click event is emitted."
@@ -166,6 +170,10 @@
         "icon": {
           "type": "string",
           "description": "Icon resource identifier that can be used find the icon"
+        },
+        "tint": {
+          "type": "string",
+          "description": "Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal"
         },
         "id": {
           "type": "string",

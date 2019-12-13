@@ -28,6 +28,7 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
 
     private String title;
     private String icon;
+    private String tint;
     private String id;
     private Boolean disabled;
     private String adaLabel;
@@ -37,6 +38,7 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
     private NavigationBarLeftButton(Builder builder) {
         this.title = builder.title;
         this.icon = builder.icon;
+        this.tint = builder.tint;
         this.id = builder.id;
         this.disabled = builder.disabled;
         this.adaLabel = builder.adaLabel;
@@ -49,6 +51,7 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
     public NavigationBarLeftButton(@NonNull Bundle bundle) {
         this.title = bundle.getString("title");
         this.icon = bundle.getString("icon");
+        this.tint = bundle.getString("tint");
         this.id = bundle.getString("id");
         this.disabled = bundle.containsKey("disabled") ? bundle.getBoolean("disabled") : null;
         this.adaLabel = bundle.getString("adaLabel");
@@ -84,6 +87,16 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
     @Nullable
     public String getIcon() {
         return icon;
+    }
+
+    /**
+    * Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal
+    *
+    * @return String
+    */
+    @Nullable
+    public String getTint() {
+        return tint;
     }
 
     /**
@@ -137,6 +150,9 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
         if(icon != null) {
             bundle.putString("icon", this.icon );
         }
+        if(tint != null) {
+            bundle.putString("tint", this.tint );
+        }
         if(id != null) {
             bundle.putString("id", this.id );
         }
@@ -154,6 +170,7 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
         return "{"
         + "title:" + (title != null ? "\"" + title + "\"" : null)+ ","
         + "icon:" + (icon != null ? "\"" + icon + "\"" : null)+ ","
+        + "tint:" + (tint != null ? "\"" + tint + "\"" : null)+ ","
         + "id:" + (id != null ? "\"" + id + "\"" : null)+ ","
         + "disabled:" + disabled+ ","
         + "adaLabel:" + (adaLabel != null ? "\"" + adaLabel + "\"" : null)
@@ -163,6 +180,7 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
     public static class Builder {
         private String title;
         private String icon;
+        private String tint;
         private String id;
         private Boolean disabled;
         private String adaLabel;
@@ -178,6 +196,11 @@ public class NavigationBarLeftButton implements Parcelable, Bridgeable {
         @NonNull
         public Builder icon(@Nullable String icon) {
             this.icon = icon;
+            return this;
+        }
+        @NonNull
+        public Builder tint(@Nullable String tint) {
+            this.tint = tint;
             return this;
         }
         @NonNull
