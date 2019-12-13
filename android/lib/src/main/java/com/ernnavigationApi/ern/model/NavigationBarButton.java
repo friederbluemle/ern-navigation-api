@@ -28,6 +28,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
 
     private String title;
     private String icon;
+    private String tint;
     private String id;
     private String location;
     private Boolean disabled;
@@ -38,6 +39,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     private NavigationBarButton(Builder builder) {
         this.title = builder.title;
         this.icon = builder.icon;
+        this.tint = builder.tint;
         this.id = builder.id;
         this.location = builder.location;
         this.disabled = builder.disabled;
@@ -55,6 +57,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
 
         this.title = bundle.getString("title");
         this.icon = bundle.getString("icon");
+        this.tint = bundle.getString("tint");
         this.id = bundle.getString("id");
         this.location = bundle.getString("location");
         this.disabled = bundle.containsKey("disabled") ? bundle.getBoolean("disabled") : null;
@@ -91,6 +94,16 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     @Nullable
     public String getIcon() {
         return icon;
+    }
+
+    /**
+    * Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal
+    *
+    * @return String
+    */
+    @Nullable
+    public String getTint() {
+        return tint;
     }
 
     /**
@@ -155,6 +168,9 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         if(icon != null) {
             bundle.putString("icon", this.icon );
         }
+        if(tint != null) {
+            bundle.putString("tint", this.tint );
+        }
         if(location != null) {
             bundle.putString("location", this.location );
         }
@@ -172,6 +188,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         return "{"
         + "title:" + (title != null ? "\"" + title + "\"" : null)+ ","
         + "icon:" + (icon != null ? "\"" + icon + "\"" : null)+ ","
+        + "tint:" + (tint != null ? "\"" + tint + "\"" : null)+ ","
         + "id:" + (id != null ? "\"" + id + "\"" : null)+ ","
         + "location:" + (location != null ? "\"" + location + "\"" : null)+ ","
         + "disabled:" + disabled+ ","
@@ -183,6 +200,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         private final String id;
         private String title;
         private String icon;
+        private String tint;
         private String location;
         private Boolean disabled;
         private String adaLabel;
@@ -199,6 +217,11 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         @NonNull
         public Builder icon(@Nullable String icon) {
             this.icon = icon;
+            return this;
+        }
+        @NonNull
+        public Builder tint(@Nullable String tint) {
+            this.tint = tint;
             return this;
         }
         @NonNull
