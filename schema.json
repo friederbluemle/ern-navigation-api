@@ -120,6 +120,10 @@
         "overlay": {
           "type": "boolean",
           "description": "If set to true, the view component would be displayed over a transparent theme. Default value is false."
+        },
+        "refresh": {
+          "type": "boolean",
+          "description": "Set to true if you would like to re-render a component while navigating back to it."
         }
       },
       "required": [
