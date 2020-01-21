@@ -30,6 +30,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     private String jsonPayload;
     private NavigationBar navigationBar;
     private Boolean overlay;
+    private Boolean refresh;
 
     private ErnNavRoute() {}
 
@@ -38,6 +39,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         this.jsonPayload = builder.jsonPayload;
         this.navigationBar = builder.navigationBar;
         this.overlay = builder.overlay;
+        this.refresh = builder.refresh;
     }
 
     private ErnNavRoute(Parcel in) {
@@ -53,6 +55,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         this.jsonPayload = bundle.getString("jsonPayload");
         this.navigationBar = bundle.containsKey("navigationBar") ? new NavigationBar(bundle.getBundle("navigationBar")) : null;
         this.overlay = bundle.containsKey("overlay") ? bundle.getBoolean("overlay") : null;
+        this.refresh = bundle.containsKey("refresh") ? bundle.getBoolean("refresh") : null;
     }
 
     public static final Creator<ErnNavRoute> CREATOR = new Creator<ErnNavRoute>() {
@@ -102,6 +105,16 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         return overlay;
     }
 
+    /**
+    * Set to true if you would like to re-render a component while navigating back to it.
+    *
+    * @return Boolean
+    */
+    @Nullable
+    public Boolean getRefresh() {
+        return refresh;
+    }
+
 
     @Override
     public int describeContents() {
@@ -127,6 +140,9 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         if(this.overlay != null) {
             bundle.putBoolean("overlay", this.overlay);
         }
+        if(this.refresh != null) {
+            bundle.putBoolean("refresh", this.refresh);
+        }
         return bundle;
     }
 
@@ -136,7 +152,8 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         + "path:" + (path != null ? "\"" + path + "\"" : null)+ ","
         + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)+ ","
         + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null)+ ","
-        + "overlay:" + overlay
+        + "overlay:" + overlay+ ","
+        + "refresh:" + refresh
         + "}";
     }
 
@@ -145,6 +162,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         private String jsonPayload;
         private NavigationBar navigationBar;
         private Boolean overlay;
+        private Boolean refresh;
 
         public Builder(@NonNull String path) {
             this.path = path;
@@ -163,6 +181,11 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         @NonNull
         public Builder overlay(@Nullable Boolean overlay) {
             this.overlay = overlay;
+            return this;
+        }
+        @NonNull
+        public Builder refresh(@Nullable Boolean refresh) {
+            this.refresh = refresh;
             return this;
         }
 
