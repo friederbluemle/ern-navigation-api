@@ -101,6 +101,31 @@
           }
         ]
       }
+    },
+    "/events-navigation": {
+      "event": {
+        "tags": [
+          "EnNavigation"
+        ],
+        "description": "Generic navigation related events",
+        "operationId": "NavEvent",
+        "parameters": [
+          {
+            "name": "eventType",
+            "in": "path",
+            "description": "Type of the event. Supported values [BUTTON_CLICK, DID_FOCUS, DID_BLUR]",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "payload",
+            "in": "path",
+            "description": "optional payload associated with the event",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
     }
   },
   "definitions": {

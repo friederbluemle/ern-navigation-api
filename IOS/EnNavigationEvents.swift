@@ -1,5 +1,13 @@
 #if swift(>=4.0)
 @objcMembers public class EnNavigationEvents:  EnNavigationAPIEvents {
+    public override func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+        let listenerProcessor = EventListenerProcessor(
+                                eventName: EnNavigationAPI.kEventNavEvent,
+                                eventPayloadClass: NavEventData.self,
+                                eventListener: eventListener)
+
+        return listenerProcessor.execute()
+    }
     public override func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
         let listenerProcessor = EventListenerProcessor(
                                 eventName: EnNavigationAPI.kEventOnNavButtonClick,
@@ -10,11 +18,21 @@
     }
 
 
+    public override func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+        return ElectrodeBridgeHolder.removeEventListener(uuid)
+    }
     public override func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
         return ElectrodeBridgeHolder.removeEventListener(uuid)
     }
 
 
+    public override func emitEventNavEvent(navEventData: NavEventData) {
+        let eventProcessor = EventProcessor(
+                                eventName: EnNavigationAPI.kEventNavEvent,
+                                eventPayload: navEventData)
+
+        eventProcessor.execute()
+    }
     public override func emitEventOnNavButtonClick(buttonId: String) {
         let eventProcessor = EventProcessor(
                                 eventName: EnNavigationAPI.kEventOnNavButtonClick,
@@ -26,6 +44,14 @@
 }
 #else
 public class EnNavigationEvents:  EnNavigationAPIEvents {
+    public override func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+        let listenerProcessor = EventListenerProcessor(
+                                eventName: EnNavigationAPI.kEventNavEvent,
+                                eventPayloadClass: NavEventData.self,
+                                eventListener: eventListener)
+
+        return listenerProcessor.execute()
+    }
     public override func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
         let listenerProcessor = EventListenerProcessor(
                                 eventName: EnNavigationAPI.kEventOnNavButtonClick,
@@ -35,10 +61,20 @@ public class EnNavigationEvents:  EnNavigationAPIEvents {
         return listenerProcessor.execute()
     }
 
+    public override func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+        return ElectrodeBridgeHolder.removeEventListener(uuid)
+    }
     public override func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
         return ElectrodeBridgeHolder.removeEventListener(uuid)
     }
 
+    public override func emitEventNavEvent(navEventData: NavEventData) {
+        let eventProcessor = EventProcessor(
+                                eventName: EnNavigationAPI.kEventNavEvent,
+                                eventPayload: navEventData)
+
+        eventProcessor.execute()
+    }
     public override func emitEventOnNavButtonClick(buttonId: String) {
         let eventProcessor = EventProcessor(
                                 eventName: EnNavigationAPI.kEventOnNavButtonClick,

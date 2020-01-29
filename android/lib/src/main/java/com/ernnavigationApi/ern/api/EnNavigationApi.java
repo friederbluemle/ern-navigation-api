@@ -49,12 +49,16 @@ public final class EnNavigationApi {
     }
 
     public interface Events {
+        String EVENT_NAV_EVENT = "com.ernnavigationApi.ern.api.event.navEvent";
         String EVENT_ON_NAV_BUTTON_CLICK = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
 
+        UUID addNavEventEventListener(@NonNull final ElectrodeBridgeEventListener<NavEventData> eventListener);
         UUID addOnNavButtonClickEventListener(@NonNull final ElectrodeBridgeEventListener<String> eventListener);
 
+            ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeNavEventEventListener(@NonNull final UUID uuid);
             ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeOnNavButtonClickEventListener(@NonNull final UUID uuid);
 
+        void emitNavEvent(@NonNull NavEventData navEventData);
         void emitOnNavButtonClick(@NonNull String buttonId);
 
     }
