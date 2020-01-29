@@ -30,10 +30,18 @@ final class EnNavigationEvents implements EnNavigationApi.Events {
     EnNavigationEvents() {}
 
     @Override
+    public UUID addNavEventEventListener(@NonNull final ElectrodeBridgeEventListener<NavEventData> eventListener) {
+        return new EventListenerProcessor<>(EVENT_NAV_EVENT, NavEventData.class, eventListener).execute();
+    }
+    @Override
     public UUID addOnNavButtonClickEventListener(@NonNull final ElectrodeBridgeEventListener<String> eventListener) {
         return new EventListenerProcessor<>(EVENT_ON_NAV_BUTTON_CLICK, String.class, eventListener).execute();
     }
 
+                @Override
+                public ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeNavEventEventListener(@NonNull final UUID uuid) {
+                    return ElectrodeBridgeHolder.removeEventListener(uuid);
+                }
                 @Override
                 public ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeOnNavButtonClickEventListener(@NonNull final UUID uuid) {
                     return ElectrodeBridgeHolder.removeEventListener(uuid);
@@ -41,6 +49,10 @@ final class EnNavigationEvents implements EnNavigationApi.Events {
 
     //------------------------------------------------------------------------------------------------------------------------------------
 
+    @Override
+    public void emitNavEvent(NavEventData navEventData) {
+        new EventProcessor<>(EVENT_NAV_EVENT, navEventData).execute();
+    }
     @Override
     public void emitOnNavButtonClick(String buttonId) {
         new EventProcessor<>(EVENT_ON_NAV_BUTTON_CLICK, buttonId).execute();

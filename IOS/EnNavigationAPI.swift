@@ -4,6 +4,8 @@
     static let kRequestBack = "com.ernnavigationApi.ern.api.request.back";
 
     static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish";
+    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent";
+
 
     static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
     static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
@@ -22,16 +24,28 @@
 }
 
 @objcMembers public class EnNavigationAPIEvents: NSObject {
+    public func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+        assertionFailure("should override")
+        return UUID()
+    }
     public func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
         assertionFailure("should override")
         return UUID()
     }
 
+    public func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+        assertionFailure("should override")
+        return nil
+    }
     public func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
         assertionFailure("should override")
         return nil
     }
 
+    public func emitEventNavEvent(navEventData: NavEventData) {
+        assertionFailure("should override")
+
+    }
     public func emitEventOnNavButtonClick(buttonId: String) {
         assertionFailure("should override")
 
@@ -104,6 +118,8 @@ public class EnNavigationAPI: NSObject  {
     static let kRequestBack = "com.ernnavigationApi.ern.api.request.back";
 
     static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish";
+    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent";
+
 
     static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
     static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
@@ -122,16 +138,28 @@ public class EnNavigationAPI: NSObject  {
 }
 
 public class EnNavigationAPIEvents: NSObject {
+    public func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+        assertionFailure("should override")
+        return UUID()
+    }
     public func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
         assertionFailure("should override")
         return UUID()
     }
 
+    public func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+        assertionFailure("should override")
+        return nil
+    }
     public func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
         assertionFailure("should override")
         return nil
     }
 
+    public func emitEventNavEvent(navEventData: NavEventData) {
+        assertionFailure("should override")
+
+    }
     public func emitEventOnNavButtonClick(buttonId: String) {
         assertionFailure("should override")
 

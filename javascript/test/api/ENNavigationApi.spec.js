@@ -54,6 +54,18 @@ describe('EnNavigationApi', function(){
       });
     });
 
+    describe('navEvent', function() {
+        it('should emit event navEvent successfully', (done)=> {
+        //uncomment below and update the code to test navEvent
+        //register listener.
+        //events.addNavEventEventListener(()=>done());
+        //emit event.
+        //events.emitNavEvent(eventType: string, payload: string);
+        //});
+        done();
+        });
+    });
+
     describe('navigate', function() {
       it('should send request navigate successfully', ()=> {
         //uncomment below and update the code to test navigate
