@@ -24,6 +24,7 @@ import com.walmartlabs.electrode.reactnative.bridge.RequestProcessor;
 import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerHandle;
 import java.util.*;
 import com.ernnavigationApi.ern.model.ErnNavRoute;
+import com.ernnavigationApi.ern.model.NavEventData;
 
 
 final class EnNavigationRequests implements EnNavigationApi.Requests {

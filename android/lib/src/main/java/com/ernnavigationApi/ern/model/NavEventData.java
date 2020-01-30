@@ -11,7 +11,7 @@
 * limitations under the License.
 */
 
-package com.ernnavigationApi.ern.api;
+package com.ernnavigationApi.ern.model;
 
 import android.os.Bundle;
 import android.os.Parcel;
@@ -19,6 +19,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.util.List;
+
 import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
@@ -26,13 +27,15 @@ import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.
 public class NavEventData implements Parcelable, Bridgeable {
 
     private String eventType;
-    private String payload;
+    private String viewId;
+    private String jsonPayload;
 
     private NavEventData() {}
 
     private NavEventData(Builder builder) {
         this.eventType = builder.eventType;
-        this.payload = builder.payload;
+        this.viewId = builder.viewId;
+        this.jsonPayload = builder.jsonPayload;
     }
 
     private NavEventData(Parcel in) {
@@ -40,14 +43,13 @@ public class NavEventData implements Parcelable, Bridgeable {
     }
 
     public NavEventData(@NonNull Bundle bundle) {
-        if(bundle.get("eventType") == null){
+        if(!bundle.containsKey("eventType")){
             throw new IllegalArgumentException("eventType property is required");
         }
-        if(bundle.get("payload") == null){
-            throw new IllegalArgumentException("payload property is required");
-        }
+
         this.eventType = bundle.getString("eventType");
-        this.payload = bundle.getString("payload");
+        this.viewId = bundle.getString("viewId");
+        this.jsonPayload = bundle.getString("jsonPayload");
     }
 
     public static final Creator<NavEventData> CREATOR = new Creator<NavEventData>() {
@@ -68,8 +70,18 @@ public class NavEventData implements Parcelable, Bridgeable {
     * @return String
     */
     @NonNull
-    public String geteventType() {
+    public String getEventType() {
         return eventType;
+    }
+
+    /**
+    * MiniApp view identifier to indicate the view instance that is firing the event. This is needed when more than one instance of the same component is mounted.
+    *
+    * @return String
+    */
+    @Nullable
+    public String getViewId() {
+        return viewId;
     }
 
     /**
@@ -77,9 +89,9 @@ public class NavEventData implements Parcelable, Bridgeable {
     *
     * @return String
     */
-    @NonNull
-    public String getpayload() {
-        return payload;
+    @Nullable
+    public String getJsonPayload() {
+        return jsonPayload;
     }
 
 
@@ -98,19 +110,43 @@ public class NavEventData implements Parcelable, Bridgeable {
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("eventType", this.eventType);
-        bundle.putString("payload", this.payload);
+        if(viewId != null) {
+            bundle.putString("viewId", this.viewId );
+        }
+        if(jsonPayload != null) {
+            bundle.putString("jsonPayload", this.jsonPayload );
+        }
         return bundle;
+    }
+
+    @Override
+    public String toString() {
+        return "{"
+        + "eventType:" + (eventType != null ? "\"" + eventType + "\"" : null)+ ","
+        + "viewId:" + (viewId != null ? "\"" + viewId + "\"" : null)+ ","
+        + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)
+        + "}";
     }
 
     public static class Builder {
         private final String eventType;
-        private final String payload;
+        private String viewId;
+        private String jsonPayload;
 
-        public Builder(@NonNull String eventType, @NonNull String payload) {
+        public Builder(@NonNull String eventType) {
             this.eventType = eventType;
-            this.payload = payload;
         }
 
+        @NonNull
+        public Builder viewId(@Nullable String viewId) {
+            this.viewId = viewId;
+            return this;
+        }
+        @NonNull
+        public Builder jsonPayload(@Nullable String jsonPayload) {
+            this.jsonPayload = jsonPayload;
+            return this;
+        }
 
         @NonNull
         public NavEventData build() {

@@ -42,7 +42,7 @@
         return nil
     }
 
-    public func emitEventNavEvent(navEventData: NavEventData) {
+    public func emitEventNavEvent(eventData: NavEventData) {
         assertionFailure("should override")
 
     }
@@ -156,7 +156,7 @@ public class EnNavigationAPIEvents: NSObject {
         return nil
     }
 
-    public func emitEventNavEvent(navEventData: NavEventData) {
+    public func emitEventNavEvent(eventData: NavEventData) {
         assertionFailure("should override")
 
     }
