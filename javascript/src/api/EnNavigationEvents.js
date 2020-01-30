@@ -20,20 +20,8 @@ export default class EnNavigationEvents {
 
 //------------------------------------------------------------------------------------------------------------------------------------
 
-            emitNavEvent(eventType: string, payload: string): void {
-
-     const data =  {}
-        // verify the required parameter 'eventType' is set
-        if (eventType  == null) {
-        throw "Missing the required parameter 'eventType' when calling 'EnNavigationApi#navEvent'";
-        }
-        // verify the required parameter 'payload' is set
-        if (payload  == null) {
-        throw "Missing the required parameter 'payload' when calling 'EnNavigationApi#navEvent'";
-        }
-           data['eventType'] = eventType;
-           data['payload'] = payload;
-                    return this._bridge.emitEvent("com.ernnavigationApi.ern.api.event.navEvent", { data })
+            emitNavEvent(eventData: any): void {
+                    return this._bridge.emitEvent("com.ernnavigationApi.ern.api.event.navEvent", { data:eventData });
 
 
             }

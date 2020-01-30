@@ -111,18 +111,13 @@
         "operationId": "NavEvent",
         "parameters": [
           {
-            "name": "eventType",
-            "in": "path",
-            "description": "Type of the event. Supported values [BUTTON_CLICK, DID_FOCUS, DID_BLUR]",
+            "name": "eventData",
+            "in": "body",
+            "description": "navigation event data",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "payload",
-            "in": "path",
-            "description": "optional payload associated with the event",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/NavEventData"
+            }
           }
         ]
       }
@@ -242,7 +237,26 @@
       "required": [
         "title"
       ]
-    }
+    },
+  "NavEventData": {
+    "properties": {
+      "eventType": {
+        "type": "string",
+        "description": "Type of the event. Supported values [BUTTON_CLICK, DID_FOCUS, DID_BLUR]"
+      },
+      "viewId": {
+        "type": "string",
+        "description": "MiniApp view identifier to indicate the view instance that is firing the event. This is needed when more than one instance of the same component is mounted."
+      },
+      "jsonPayload": {
+        "type": "string",
+        "description": "optional payload associated with the event"
+      }
+    },
+    "required": [
+      "eventType"
+    ]
+  }
   },
   "ern": {
     "moduleName": "Counseling",

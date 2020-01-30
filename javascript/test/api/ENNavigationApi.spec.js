@@ -60,7 +60,7 @@ describe('EnNavigationApi', function(){
         //register listener.
         //events.addNavEventEventListener(()=>done());
         //emit event.
-        //events.emitNavEvent(eventType: string, payload: string);
+        //events.emitNavEvent(eventData: any);
         //});
         done();
         });

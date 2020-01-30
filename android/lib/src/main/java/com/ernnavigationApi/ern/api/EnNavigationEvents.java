@@ -25,6 +25,7 @@ import java.util.*;
 import java.util.UUID;
 
     import com.ernnavigationApi.ern.model.ErnNavRoute;
+    import com.ernnavigationApi.ern.model.NavEventData;
 
 final class EnNavigationEvents implements EnNavigationApi.Events {
     EnNavigationEvents() {}
@@ -50,8 +51,8 @@ final class EnNavigationEvents implements EnNavigationApi.Events {
     //------------------------------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void emitNavEvent(NavEventData navEventData) {
-        new EventProcessor<>(EVENT_NAV_EVENT, navEventData).execute();
+    public void emitNavEvent(NavEventData eventData) {
+        new EventProcessor<>(EVENT_NAV_EVENT, eventData).execute();
     }
     @Override
     public void emitOnNavButtonClick(String buttonId) {

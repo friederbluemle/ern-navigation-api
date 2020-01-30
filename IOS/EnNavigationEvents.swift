@@ -26,10 +26,10 @@
     }
 
 
-    public override func emitEventNavEvent(navEventData: NavEventData) {
+    public override func emitEventNavEvent(eventData: NavEventData) {
         let eventProcessor = EventProcessor(
                                 eventName: EnNavigationAPI.kEventNavEvent,
-                                eventPayload: navEventData)
+                                eventPayload: eventData)
 
         eventProcessor.execute()
     }
@@ -68,10 +68,10 @@ public class EnNavigationEvents:  EnNavigationAPIEvents {
         return ElectrodeBridgeHolder.removeEventListener(uuid)
     }
 
-    public override func emitEventNavEvent(navEventData: NavEventData) {
+    public override func emitEventNavEvent(eventData: NavEventData) {
         let eventProcessor = EventProcessor(
                                 eventName: EnNavigationAPI.kEventNavEvent,
-                                eventPayload: navEventData)
+                                eventPayload: eventData)
 
         eventProcessor.execute()
     }

@@ -25,6 +25,7 @@ import java.util.*;
 import java.util.UUID;
 
 import com.ernnavigationApi.ern.model.ErnNavRoute;
+import com.ernnavigationApi.ern.model.NavEventData;
 
 public final class EnNavigationApi {
     private static final Requests REQUESTS;
@@ -58,7 +59,7 @@ public final class EnNavigationApi {
             ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeNavEventEventListener(@NonNull final UUID uuid);
             ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeOnNavButtonClickEventListener(@NonNull final UUID uuid);
 
-        void emitNavEvent(@NonNull NavEventData navEventData);
+        void emitNavEvent(@NonNull NavEventData eventData);
         void emitOnNavButtonClick(@NonNull String buttonId);
 
     }
