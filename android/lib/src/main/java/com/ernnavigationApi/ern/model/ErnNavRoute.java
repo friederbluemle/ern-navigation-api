@@ -1,15 +1,18 @@
 /*
-* Copyright 2017 WalmartLabs
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-* http://www.apache.org/licenses/LICENSE-2.0
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020 Walmart Labs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.ernnavigationApi.ern.model;
 
@@ -25,6 +28,18 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
 public class ErnNavRoute implements Parcelable, Bridgeable {
+    public static final Creator<ErnNavRoute> CREATOR =
+            new Creator<ErnNavRoute>() {
+                @Override
+                public ErnNavRoute createFromParcel(Parcel in) {
+                    return new ErnNavRoute(in);
+                }
+
+                @Override
+                public ErnNavRoute[] newArray(int size) {
+                    return new ErnNavRoute[size];
+                }
+            };
 
     private String path;
     private String jsonPayload;
@@ -32,7 +47,8 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     private Boolean overlay;
     private Boolean refresh;
 
-    private ErnNavRoute() {}
+    private ErnNavRoute() {
+    }
 
     private ErnNavRoute(Builder builder) {
         this.path = builder.path;
@@ -47,7 +63,7 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     }
 
     public ErnNavRoute(@NonNull Bundle bundle) {
-        if(!bundle.containsKey("path")){
+        if (!bundle.containsKey("path")) {
             throw new IllegalArgumentException("path property is required");
         }
 
@@ -58,33 +74,21 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
         this.refresh = bundle.containsKey("refresh") ? bundle.getBoolean("refresh") : null;
     }
 
-    public static final Creator<ErnNavRoute> CREATOR = new Creator<ErnNavRoute>() {
-        @Override
-        public ErnNavRoute createFromParcel(Parcel in) {
-            return new ErnNavRoute(in);
-        }
-
-        @Override
-        public ErnNavRoute[] newArray(int size) {
-            return new ErnNavRoute[size];
-        }
-    };
-
     /**
-    * Path of the Route. Mostly the name of the container(defined by the native app) or the miniapp name. The content of the path is mainly determined by the native implemenation of the API
-    *
-    * @return String
-    */
+     * Path of the Route. Mostly the name of the container(defined by the native app) or the miniapp name. The content of the path is mainly determined by the native implemenation of the API
+     *
+     * @return String
+     */
     @NonNull
     public String getPath() {
         return path;
     }
 
     /**
-    * Optional Payload (respresented as JSON String) needed by the screen you are trying to navigate to.
-    *
-    * @return String
-    */
+     * Optional Payload (respresented as JSON String) needed by the screen you are trying to navigate to.
+     *
+     * @return String
+     */
     @Nullable
     public String getJsonPayload() {
         return jsonPayload;
@@ -96,25 +100,24 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     }
 
     /**
-    * If set to true, the view component would be displayed over a transparent theme. Default value is false.
-    *
-    * @return Boolean
-    */
+     * If set to true, the view component would be displayed over a transparent theme. Default value is false.
+     *
+     * @return Boolean
+     */
     @Nullable
     public Boolean getOverlay() {
         return overlay;
     }
 
     /**
-    * Set to true if you would like to re-render a component while navigating back to it.
-    *
-    * @return Boolean
-    */
+     * Set to true if you would like to re-render a component while navigating back to it.
+     *
+     * @return Boolean
+     */
     @Nullable
     public Boolean getRefresh() {
         return refresh;
     }
-
 
     @Override
     public int describeContents() {
@@ -131,16 +134,16 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("path", this.path);
-        if(jsonPayload != null) {
-            bundle.putString("jsonPayload", this.jsonPayload );
+        if (jsonPayload != null) {
+            bundle.putString("jsonPayload", this.jsonPayload);
         }
-        if(this.navigationBar != null) {
+        if (this.navigationBar != null) {
             bundle.putBundle("navigationBar", this.navigationBar.toBundle());
         }
-        if(this.overlay != null) {
+        if (this.overlay != null) {
             bundle.putBoolean("overlay", this.overlay);
         }
-        if(this.refresh != null) {
+        if (this.refresh != null) {
             bundle.putBoolean("refresh", this.refresh);
         }
         return bundle;
@@ -149,12 +152,12 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
     @Override
     public String toString() {
         return "{"
-        + "path:" + (path != null ? "\"" + path + "\"" : null)+ ","
-        + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)+ ","
-        + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null)+ ","
-        + "overlay:" + overlay+ ","
-        + "refresh:" + refresh
-        + "}";
+                + "path:" + (path != null ? "\"" + path + "\"" : null) + ","
+                + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null) + ","
+                + "navigationBar:" + (navigationBar != null ? navigationBar.toString() : null) + ","
+                + "overlay:" + overlay + ","
+                + "refresh:" + refresh
+                + "}";
     }
 
     public static class Builder {
@@ -173,16 +176,19 @@ public class ErnNavRoute implements Parcelable, Bridgeable {
             this.jsonPayload = jsonPayload;
             return this;
         }
+
         @NonNull
         public Builder navigationBar(@Nullable NavigationBar navigationBar) {
             this.navigationBar = navigationBar;
             return this;
         }
+
         @NonNull
         public Builder overlay(@Nullable Boolean overlay) {
             this.overlay = overlay;
             return this;
         }
+
         @NonNull
         public Builder refresh(@Nullable Boolean refresh) {
             this.refresh = refresh;

@@ -1,15 +1,18 @@
 /*
-* Copyright 2017 WalmartLabs
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-* http://www.apache.org/licenses/LICENSE-2.0
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020 Walmart Labs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.ernnavigationApi.ern.model;
 
@@ -25,6 +28,18 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
 public class NavigationBarButton implements Parcelable, Bridgeable {
+    public static final Creator<NavigationBarButton> CREATOR =
+            new Creator<NavigationBarButton>() {
+                @Override
+                public NavigationBarButton createFromParcel(Parcel in) {
+                    return new NavigationBarButton(in);
+                }
+
+                @Override
+                public NavigationBarButton[] newArray(int size) {
+                    return new NavigationBarButton[size];
+                }
+            };
 
     private String title;
     private String icon;
@@ -34,7 +49,8 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     private Boolean disabled;
     private String adaLabel;
 
-    private NavigationBarButton() {}
+    private NavigationBarButton() {
+    }
 
     private NavigationBarButton(Builder builder) {
         this.title = builder.title;
@@ -51,7 +67,7 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     }
 
     public NavigationBarButton(@NonNull Bundle bundle) {
-        if(!bundle.containsKey("id")){
+        if (!bundle.containsKey("id")) {
             throw new IllegalArgumentException("id property is required");
         }
 
@@ -64,88 +80,75 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
         this.adaLabel = bundle.getString("adaLabel");
     }
 
-    public static final Creator<NavigationBarButton> CREATOR = new Creator<NavigationBarButton>() {
-        @Override
-        public NavigationBarButton createFromParcel(Parcel in) {
-            return new NavigationBarButton(in);
-        }
-
-        @Override
-        public NavigationBarButton[] newArray(int size) {
-            return new NavigationBarButton[size];
-        }
-    };
-
     /**
-    * Button title if any.
-    *
-    * @return String
-    */
+     * Button title if any.
+     *
+     * @return String
+     */
     @Nullable
     public String getTitle() {
         return title;
     }
 
     /**
-    * Icon resource identifier that can be used find the icon
-    *
-    * @return String
-    */
+     * Icon resource identifier that can be used find the icon
+     *
+     * @return String
+     */
     @Nullable
     public String getIcon() {
         return icon;
     }
 
     /**
-    * Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal
-    *
-    * @return String
-    */
+     * Specifies a tint for the icon. Supported formats: #RRGGBB, #AARRGGBB. Supported values: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver and teal
+     *
+     * @return String
+     */
     @Nullable
     public String getTint() {
         return tint;
     }
 
     /**
-    * Id of the button, this namespace will be used as an identifier when a button click event is emitted.
-    *
-    * @return String
-    */
+     * Id of the button, this namespace will be used as an identifier when a button click event is emitted.
+     *
+     * @return String
+     */
     @NonNull
     public String getId() {
         return id;
     }
 
     /**
-    * @Deprecated This is now Deprecated with the introduction of NavigationBarLeftButton. Allowed enums: left, right
-    *
-    * @return String
-    */
+     * @Deprecated This is now Deprecated with the introduction of NavigationBarLeftButton. Allowed enums: left, right
+     *
+     * @return String
+     */
     @Nullable
     public String getLocation() {
         return location;
     }
 
     /**
-    * Default to false. If set to true the button will be disabled(non-clickable)
-    *
-    * @return Boolean
-    */
+     * Default to false. If set to true the button will be disabled(non-clickable)
+     *
+     * @return Boolean
+     */
     @Nullable
     public Boolean getDisabled() {
         return disabled;
     }
 
     /**
-    * Accessibility label
-    *
-    * @return String
-    */
+     * Accessibility label
+     *
+     * @return String
+     */
     @Nullable
     public String getAdaLabel() {
         return adaLabel;
     }
-
 
     @Override
     public int describeContents() {
@@ -162,23 +165,23 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("id", this.id);
-        if(title != null) {
-            bundle.putString("title", this.title );
+        if (title != null) {
+            bundle.putString("title", this.title);
         }
-        if(icon != null) {
-            bundle.putString("icon", this.icon );
+        if (icon != null) {
+            bundle.putString("icon", this.icon);
         }
-        if(tint != null) {
-            bundle.putString("tint", this.tint );
+        if (tint != null) {
+            bundle.putString("tint", this.tint);
         }
-        if(location != null) {
-            bundle.putString("location", this.location );
+        if (location != null) {
+            bundle.putString("location", this.location);
         }
-        if(this.disabled != null) {
+        if (this.disabled != null) {
             bundle.putBoolean("disabled", this.disabled);
         }
-        if(adaLabel != null) {
-            bundle.putString("adaLabel", this.adaLabel );
+        if (adaLabel != null) {
+            bundle.putString("adaLabel", this.adaLabel);
         }
         return bundle;
     }
@@ -186,14 +189,14 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
     @Override
     public String toString() {
         return "{"
-        + "title:" + (title != null ? "\"" + title + "\"" : null)+ ","
-        + "icon:" + (icon != null ? "\"" + icon + "\"" : null)+ ","
-        + "tint:" + (tint != null ? "\"" + tint + "\"" : null)+ ","
-        + "id:" + (id != null ? "\"" + id + "\"" : null)+ ","
-        + "location:" + (location != null ? "\"" + location + "\"" : null)+ ","
-        + "disabled:" + disabled+ ","
-        + "adaLabel:" + (adaLabel != null ? "\"" + adaLabel + "\"" : null)
-        + "}";
+                + "title:" + (title != null ? "\"" + title + "\"" : null) + ","
+                + "icon:" + (icon != null ? "\"" + icon + "\"" : null) + ","
+                + "tint:" + (tint != null ? "\"" + tint + "\"" : null) + ","
+                + "id:" + (id != null ? "\"" + id + "\"" : null) + ","
+                + "location:" + (location != null ? "\"" + location + "\"" : null) + ","
+                + "disabled:" + disabled + ","
+                + "adaLabel:" + (adaLabel != null ? "\"" + adaLabel + "\"" : null)
+                + "}";
     }
 
     public static class Builder {
@@ -214,26 +217,31 @@ public class NavigationBarButton implements Parcelable, Bridgeable {
             this.title = title;
             return this;
         }
+
         @NonNull
         public Builder icon(@Nullable String icon) {
             this.icon = icon;
             return this;
         }
+
         @NonNull
         public Builder tint(@Nullable String tint) {
             this.tint = tint;
             return this;
         }
+
         @NonNull
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+
         @NonNull
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+
         @NonNull
         public Builder adaLabel(@Nullable String adaLabel) {
             this.adaLabel = adaLabel;

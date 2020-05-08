@@ -1,6 +1,5 @@
 #if swift(>=4.0)
 @objcMembers public class NavEventData: ElectrodeObject, Bridgeable {
-
     private static let tag = String(describing: type(of: self))
 
     /**
@@ -24,60 +23,52 @@
     }
 
     public override init() {
-        self.eventType = String()
-        self.viewId = nil
-        self.jsonPayload = nil
+        eventType = String()
+        viewId = nil
+        jsonPayload = nil
         super.init()
     }
 
-    required public init(dictionary:[AnyHashable:Any]) {
-        
-
-        if let eventType = dictionary["eventType"] as? String  {
-                  self.eventType = eventType
+    public required init(dictionary: [AnyHashable: Any]) {
+        if let eventType = dictionary["eventType"] as? String {
+            self.eventType = eventType
         } else {
-            assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType] ")
-            self.eventType = dictionary["eventType"] as! String
+            assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType]")
+            eventType = dictionary["eventType"] as! String
         }
-
-         
-
 
         if let viewId = dictionary["viewId"] as? String {
-            self.viewId = viewId
+            viewId = viewId
         } else {
-            self.viewId = nil
+            viewId = nil
         }
-        
-
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            self.jsonPayload = jsonPayload
+            jsonPayload = jsonPayload
         } else {
-            self.jsonPayload = nil
+            jsonPayload = nil
         }
-        
+
         super.init(dictionary: dictionary)
     }
 
     public func toDictionary() -> NSDictionary {
+        var dict = [:] as [AnyHashable: Any]
 
-         var dict = [:] as [AnyHashable : Any]
+        dict["eventType"] = eventType
 
-         dict["eventType"] =  self.eventType
-
-        if let nonNullViewId = self.viewId {
-                dict["viewId"] = nonNullViewId
+        if let nonNullViewId = viewId {
+            dict["viewId"] = nonNullViewId
         }
-        if let nonNullJsonPayload = self.jsonPayload {
-                dict["jsonPayload"] = nonNullJsonPayload
+        if let nonNullJsonPayload = jsonPayload {
+            dict["jsonPayload"] = nonNullJsonPayload
         }
         return dict as NSDictionary
     }
 }
+
 #else
 
 public class NavEventData: ElectrodeObject, Bridgeable {
-
     private static let tag = String(describing: type(of: self))
 
     /**
@@ -101,52 +92,44 @@ public class NavEventData: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
-        self.eventType = String()
-        self.viewId = nil
-        self.jsonPayload = nil
+        eventType = String()
+        viewId = nil
+        jsonPayload = nil
         super.init()
     }
 
-    required public init(dictionary:[AnyHashable:Any]) {
-        
-
-        if let eventType = dictionary["eventType"] as? String  {
-                  self.eventType = eventType
+    public required init(dictionary: [AnyHashable: Any]) {
+        if let eventType = dictionary["eventType"] as? String {
+            self.eventType = eventType
         } else {
-            assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType] ")
-            self.eventType = dictionary["eventType"] as! String
+            assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType]")
+            eventType = dictionary["eventType"] as! String
         }
-
-         
-
 
         if let viewId = dictionary["viewId"] as? String {
-            self.viewId = viewId
+            viewId = viewId
         } else {
-            self.viewId = nil
+            viewId = nil
         }
-        
-
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            self.jsonPayload = jsonPayload
+            jsonPayload = jsonPayload
         } else {
-            self.jsonPayload = nil
+            jsonPayload = nil
         }
-        
+
         super.init(dictionary: dictionary)
     }
 
     public func toDictionary() -> NSDictionary {
+        var dict = [:] as [AnyHashable: Any]
 
-         var dict = [:] as [AnyHashable : Any]
+        dict["eventType"] = eventType
 
-         dict["eventType"] =  self.eventType
-
-        if let nonNullViewId = self.viewId {
-                dict["viewId"] = nonNullViewId
+        if let nonNullViewId = viewId {
+            dict["viewId"] = nonNullViewId
         }
-        if let nonNullJsonPayload = self.jsonPayload {
-                dict["jsonPayload"] = nonNullJsonPayload
+        if let nonNullJsonPayload = jsonPayload {
+            dict["jsonPayload"] = nonNullJsonPayload
         }
         return dict as NSDictionary
     }

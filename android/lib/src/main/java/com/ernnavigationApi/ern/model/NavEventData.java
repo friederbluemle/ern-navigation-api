@@ -1,15 +1,18 @@
 /*
-* Copyright 2017 WalmartLabs
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-* http://www.apache.org/licenses/LICENSE-2.0
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020 Walmart Labs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.ernnavigationApi.ern.model;
 
@@ -25,12 +28,25 @@ import com.walmartlabs.electrode.reactnative.bridge.Bridgeable;
 import static com.walmartlabs.electrode.reactnative.bridge.util.BridgeArguments.*;
 
 public class NavEventData implements Parcelable, Bridgeable {
+    public static final Creator<NavEventData> CREATOR =
+            new Creator<NavEventData>() {
+                @Override
+                public NavEventData createFromParcel(Parcel in) {
+                    return new NavEventData(in);
+                }
+
+                @Override
+                public NavEventData[] newArray(int size) {
+                    return new NavEventData[size];
+                }
+            };
 
     private String eventType;
     private String viewId;
     private String jsonPayload;
 
-    private NavEventData() {}
+    private NavEventData() {
+    }
 
     private NavEventData(Builder builder) {
         this.eventType = builder.eventType;
@@ -43,7 +59,7 @@ public class NavEventData implements Parcelable, Bridgeable {
     }
 
     public NavEventData(@NonNull Bundle bundle) {
-        if(!bundle.containsKey("eventType")){
+        if (!bundle.containsKey("eventType")) {
             throw new IllegalArgumentException("eventType property is required");
         }
 
@@ -52,48 +68,35 @@ public class NavEventData implements Parcelable, Bridgeable {
         this.jsonPayload = bundle.getString("jsonPayload");
     }
 
-    public static final Creator<NavEventData> CREATOR = new Creator<NavEventData>() {
-        @Override
-        public NavEventData createFromParcel(Parcel in) {
-            return new NavEventData(in);
-        }
-
-        @Override
-        public NavEventData[] newArray(int size) {
-            return new NavEventData[size];
-        }
-    };
-
     /**
-    * Type of the event. Supported values [BUTTON_CLICK, DID_FOCUS, DID_BLUR]
-    *
-    * @return String
-    */
+     * Type of the event. Supported values [BUTTON_CLICK, DID_FOCUS, DID_BLUR]
+     *
+     * @return String
+     */
     @NonNull
     public String getEventType() {
         return eventType;
     }
 
     /**
-    * MiniApp view identifier to indicate the view instance that is firing the event. This is needed when more than one instance of the same component is mounted.
-    *
-    * @return String
-    */
+     * MiniApp view identifier to indicate the view instance that is firing the event. This is needed when more than one instance of the same component is mounted.
+     *
+     * @return String
+     */
     @Nullable
     public String getViewId() {
         return viewId;
     }
 
     /**
-    * optional payload associated with the event
-    *
-    * @return String
-    */
+     * optional payload associated with the event
+     *
+     * @return String
+     */
     @Nullable
     public String getJsonPayload() {
         return jsonPayload;
     }
-
 
     @Override
     public int describeContents() {
@@ -110,11 +113,11 @@ public class NavEventData implements Parcelable, Bridgeable {
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("eventType", this.eventType);
-        if(viewId != null) {
-            bundle.putString("viewId", this.viewId );
+        if (viewId != null) {
+            bundle.putString("viewId", this.viewId);
         }
-        if(jsonPayload != null) {
-            bundle.putString("jsonPayload", this.jsonPayload );
+        if (jsonPayload != null) {
+            bundle.putString("jsonPayload", this.jsonPayload);
         }
         return bundle;
     }
@@ -122,10 +125,10 @@ public class NavEventData implements Parcelable, Bridgeable {
     @Override
     public String toString() {
         return "{"
-        + "eventType:" + (eventType != null ? "\"" + eventType + "\"" : null)+ ","
-        + "viewId:" + (viewId != null ? "\"" + viewId + "\"" : null)+ ","
-        + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)
-        + "}";
+                + "eventType:" + (eventType != null ? "\"" + eventType + "\"" : null) + ","
+                + "viewId:" + (viewId != null ? "\"" + viewId + "\"" : null) + ","
+                + "jsonPayload:" + (jsonPayload != null ? "\"" + jsonPayload + "\"" : null)
+                + "}";
     }
 
     public static class Builder {
@@ -142,6 +145,7 @@ public class NavEventData implements Parcelable, Bridgeable {
             this.viewId = viewId;
             return this;
         }
+
         @NonNull
         public Builder jsonPayload(@Nullable String jsonPayload) {
             this.jsonPayload = jsonPayload;

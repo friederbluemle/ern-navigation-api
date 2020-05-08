@@ -1,6 +1,5 @@
 #if swift(>=4.0)
 @objcMembers public class ErnNavRoute: ElectrodeObject, Bridgeable {
-
     private static let tag = String(describing: type(of: self))
 
     /**
@@ -31,82 +30,70 @@
     }
 
     public override init() {
-        self.path = String()
-        self.jsonPayload = nil
-        self.navigationBar = nil
-        self.overlay = nil
-        self.refresh = nil
+        path = String()
+        jsonPayload = nil
+        navigationBar = nil
+        overlay = nil
+        refresh = nil
         super.init()
     }
 
-    required public init(dictionary:[AnyHashable:Any]) {
-        
-
-        if let path = dictionary["path"] as? String  {
-                  self.path = path
+    public required init(dictionary: [AnyHashable: Any]) {
+        if let path = dictionary["path"] as? String {
+            self.path = path
         } else {
-            assertionFailure("\(ErnNavRoute.tag) missing one or more required properties [path] ")
-            self.path = dictionary["path"] as! String
+            assertionFailure("\(ErnNavRoute.tag) missing one or more required properties [path]")
+            path = dictionary["path"] as! String
         }
-
-         
-
 
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            self.jsonPayload = jsonPayload
+            jsonPayload = jsonPayload
         } else {
-            self.jsonPayload = nil
+            jsonPayload = nil
         }
-        
-
         if let navigationBarDict = dictionary["navigationBar"] as? [AnyHashable: Any] {
-            self.navigationBar = NavigationBar(dictionary: navigationBarDict)
+            navigationBar = NavigationBar(dictionary: navigationBarDict)
         } else {
-            self.navigationBar = nil
+            navigationBar = nil
         }
-        
-
         if let overlay = dictionary["overlay"] as? Bool {
-            self.overlay = overlay
+            overlay = overlay
         } else {
-            self.overlay = nil
+            overlay = nil
         }
-        
-
         if let refresh = dictionary["refresh"] as? Bool {
-            self.refresh = refresh
+            refresh = refresh
         } else {
-            self.refresh = nil
+            refresh = nil
         }
-        
+
         super.init(dictionary: dictionary)
     }
 
     public func toDictionary() -> NSDictionary {
+        var dict = [:] as [AnyHashable: Any]
 
-         var dict = [:] as [AnyHashable : Any]
+        dict["path"] = path
 
-         dict["path"] =  self.path
-
-        if let nonNullJsonPayload = self.jsonPayload {
-                dict["jsonPayload"] = nonNullJsonPayload
+        if let nonNullJsonPayload = jsonPayload {
+            dict["jsonPayload"] = nonNullJsonPayload
         }
-        if let nonNullNavigationBar = self.navigationBar {
-                dict["navigationBar"] = nonNullNavigationBar.toDictionary()
+        if let nonNullNavigationBar = navigationBar {
+            dict["navigationBar"] = nonNullNavigationBar.toDictionary()
         }
-        if let nonNullOverlay = self.overlay {
-                dict["overlay"] = nonNullOverlay
+        if let nonNullOverlay = overlay {
+            dict["overlay"] = nonNullOverlay
         }
-        if let nonNullRefresh = self.refresh {
-                dict["refresh"] = nonNullRefresh
+        if let nonNullRefresh = refresh {
+            dict["refresh"] = nonNullRefresh
         }
         return dict as NSDictionary
     }
 }
+
 #else
 
 public class ErnNavRoute: ElectrodeObject, Bridgeable {
-
     private static let tag = String(describing: type(of: self))
 
     /**
@@ -137,74 +124,62 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
-        self.path = String()
-        self.jsonPayload = nil
-        self.navigationBar = nil
-        self.overlay = nil
-        self.refresh = nil
+        path = String()
+        jsonPayload = nil
+        navigationBar = nil
+        overlay = nil
+        refresh = nil
         super.init()
     }
 
-    required public init(dictionary:[AnyHashable:Any]) {
-        
-
-        if let path = dictionary["path"] as? String  {
-                  self.path = path
+    public required init(dictionary: [AnyHashable: Any]) {
+        if let path = dictionary["path"] as? String {
+            self.path = path
         } else {
-            assertionFailure("\(ErnNavRoute.tag) missing one or more required properties [path] ")
-            self.path = dictionary["path"] as! String
+            assertionFailure("\(ErnNavRoute.tag) missing one or more required properties [path]")
+            path = dictionary["path"] as! String
         }
-
-         
-
 
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            self.jsonPayload = jsonPayload
+            jsonPayload = jsonPayload
         } else {
-            self.jsonPayload = nil
+            jsonPayload = nil
         }
-        
-
         if let navigationBarDict = dictionary["navigationBar"] as? [AnyHashable: Any] {
-            self.navigationBar = NavigationBar(dictionary: navigationBarDict)
+            navigationBar = NavigationBar(dictionary: navigationBarDict)
         } else {
-            self.navigationBar = nil
+            navigationBar = nil
         }
-        
-
         if let overlay = dictionary["overlay"] as? Bool {
-            self.overlay = overlay
+            overlay = overlay
         } else {
-            self.overlay = nil
+            overlay = nil
         }
-        
-
         if let refresh = dictionary["refresh"] as? Bool {
-            self.refresh = refresh
+            refresh = refresh
         } else {
-            self.refresh = nil
+            refresh = nil
         }
-        
+
         super.init(dictionary: dictionary)
     }
 
     public func toDictionary() -> NSDictionary {
+        var dict = [:] as [AnyHashable: Any]
 
-         var dict = [:] as [AnyHashable : Any]
+        dict["path"] = path
 
-         dict["path"] =  self.path
-
-        if let nonNullJsonPayload = self.jsonPayload {
-                dict["jsonPayload"] = nonNullJsonPayload
+        if let nonNullJsonPayload = jsonPayload {
+            dict["jsonPayload"] = nonNullJsonPayload
         }
-        if let nonNullNavigationBar = self.navigationBar {
-                dict["navigationBar"] = nonNullNavigationBar.toDictionary()
+        if let nonNullNavigationBar = navigationBar {
+            dict["navigationBar"] = nonNullNavigationBar.toDictionary()
         }
-        if let nonNullOverlay = self.overlay {
-                dict["overlay"] = nonNullOverlay
+        if let nonNullOverlay = overlay {
+            dict["overlay"] = nonNullOverlay
         }
-        if let nonNullRefresh = self.refresh {
-                dict["refresh"] = nonNullRefresh
+        if let nonNullRefresh = refresh {
+            dict["refresh"] = nonNullRefresh
         }
         return dict as NSDictionary
     }
