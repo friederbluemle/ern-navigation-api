@@ -1,26 +1,30 @@
 /*
-* Copyright 2017 WalmartLabs
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-* http://www.apache.org/licenses/LICENSE-2.0
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020 Walmart Labs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.ernnavigationApi.ern.api;
 
 import android.support.annotation.NonNull;
 
-import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeEventListener;
 import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeEvent;
+import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeEventListener;
 import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeRequestHandler;
 import com.walmartlabs.electrode.reactnative.bridge.ElectrodeBridgeResponseListener;
 import com.walmartlabs.electrode.reactnative.bridge.None;
 import com.walmartlabs.electrode.reactnative.bridge.RequestHandlerHandle;
+
 import java.util.*;
 import java.util.UUID;
 
@@ -53,15 +57,21 @@ public final class EnNavigationApi {
         String EVENT_NAV_EVENT = "com.ernnavigationApi.ern.api.event.navEvent";
         String EVENT_ON_NAV_BUTTON_CLICK = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
 
-        UUID addNavEventEventListener(@NonNull final ElectrodeBridgeEventListener<NavEventData> eventListener);
-        UUID addOnNavButtonClickEventListener(@NonNull final ElectrodeBridgeEventListener<String> eventListener);
+        UUID addNavEventEventListener(
+                @NonNull final ElectrodeBridgeEventListener<NavEventData> eventListener);
 
-            ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeNavEventEventListener(@NonNull final UUID uuid);
-            ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeOnNavButtonClickEventListener(@NonNull final UUID uuid);
+        UUID addOnNavButtonClickEventListener(
+                @NonNull final ElectrodeBridgeEventListener<String> eventListener);
+
+        ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeNavEventEventListener(
+                @NonNull final UUID uuid);
+
+        ElectrodeBridgeEventListener<ElectrodeBridgeEvent> removeOnNavButtonClickEventListener(
+                @NonNull final UUID uuid);
 
         void emitNavEvent(@NonNull NavEventData eventData);
-        void emitOnNavButtonClick(@NonNull String buttonId);
 
+        void emitOnNavButtonClick(@NonNull String buttonId);
     }
 
     public interface Requests {
@@ -70,22 +80,32 @@ public final class EnNavigationApi {
         String REQUEST_NAVIGATE = "com.ernnavigationApi.ern.api.request.navigate";
         String REQUEST_UPDATE = "com.ernnavigationApi.ern.api.request.update";
 
+        RequestHandlerHandle registerBackRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
-        RequestHandlerHandle registerBackRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
+        RequestHandlerHandle registerFinishRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<String, None> handler);
 
-        RequestHandlerHandle registerFinishRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<String, None> handler);
+        RequestHandlerHandle registerNavigateRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
-        RequestHandlerHandle registerNavigateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
+        RequestHandlerHandle registerUpdateRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
 
-        RequestHandlerHandle registerUpdateRequestHandler(@NonNull final ElectrodeBridgeRequestHandler<ErnNavRoute, None> handler);
+        void back(
+                ErnNavRoute route,
+                @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
-        void back(ErnNavRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+        void finish(
+                String finalPayload,
+                @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
-        void finish(String finalPayload, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
+        void navigate(
+                ErnNavRoute route,
+                @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
 
-        void navigate(ErnNavRoute route, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
-
-        void update(ErnNavRoute updatedRoute, @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
-
+        void update(
+                ErnNavRoute updatedRoute,
+                @NonNull final ElectrodeBridgeResponseListener<None> responseListener);
     }
 }

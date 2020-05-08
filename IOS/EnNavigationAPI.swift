@@ -1,230 +1,211 @@
 #if swift(>=4.0)
-@objcMembers public class EnNavigationAPI: NSObject  {
-
-    static let kRequestBack = "com.ernnavigationApi.ern.api.request.back";
-
-    static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish";
-    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent";
-
-
-    static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
-    static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
-
-
-    static let kRequestUpdate = "com.ernnavigationApi.ern.api.request.update";
+@objcMembers public class EnNavigationAPI: NSObject {
+    static let kRequestBack = "com.ernnavigationApi.ern.api.request.back"
+    static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish"
+    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent"
+    static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate"
+    static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick"
+    static let kRequestUpdate = "com.ernnavigationApi.ern.api.request.update"
 
     public lazy var events: EnNavigationAPIEvents = {
-        return EnNavigationEvents()
+        EnNavigationEvents()
     }()
 
-
     public lazy var requests: EnNavigationAPIRequests = {
-        return EnNavigationRequests()
+        EnNavigationRequests()
     }()
 }
 
 @objcMembers public class EnNavigationAPIEvents: NSObject {
-    public func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
-        assertionFailure("should override")
-        return UUID()
-    }
-    public func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+    public func addNavEventEventListener(eventListener _: @escaping ElectrodeBridgeEventListener) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
-        assertionFailure("should override")
-        return nil
-    }
-    public func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+    public func removeNavEventEventListener(uuid _: UUID) -> ElectrodeBridgeEventListener? {
         assertionFailure("should override")
         return nil
     }
 
-    public func emitEventNavEvent(eventData: NavEventData) {
+    public func emitEventNavEvent(eventData _: NavEventData) {
         assertionFailure("should override")
-
     }
-    public func emitEventOnNavButtonClick(buttonId: String) {
+    public func addOnNavButtonClickEventListener(eventListener _: @escaping ElectrodeBridgeEventListener) -> UUID? {
         assertionFailure("should override")
+        return UUID()
+    }
 
+    public func removeOnNavButtonClickEventListener(uuid _: UUID) -> ElectrodeBridgeEventListener? {
+        assertionFailure("should override")
+        return nil
+    }
+
+    public func emitEventOnNavButtonClick(buttonId _: String) {
+        assertionFailure("should override")
     }
 }
 
 @objcMembers public class EnNavigationAPIRequests: NSObject {
-    public func registerBackRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerBackRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerFinishRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerFinishRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerNavigateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerNavigateRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerUpdateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerUpdateRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-
-    public func unregisterBackRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterBackRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterFinishRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterFinishRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterNavigateRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterNavigateRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterUpdateRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterUpdateRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-
-    public func back(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
+    public func back(route _: ErnNavRoute, responseCompletionHandler _: @escaping (None?, ElectrodeFailureMessage?) -> Void) {
         assertionFailure("should override")
     }
 
-    public func finish(finalPayload: String, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
+    public func finish(finalPayload _: String, responseCompletionHandler _: @escaping (None?, ElectrodeFailureMessage?) -> Void) {
         assertionFailure("should override")
     }
 
-    public func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
+    public func navigate(route _: ErnNavRoute, responseCompletionHandler _: @escaping (None?, ElectrodeFailureMessage?) -> Void) {
         assertionFailure("should override")
     }
 
-    public func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping (None?, ElectrodeFailureMessage?) -> ()) {
+    public func update(updatedRoute _: ErnNavRoute, responseCompletionHandler _: @escaping (None?, ElectrodeFailureMessage?) -> Void) {
         assertionFailure("should override")
     }
-
 }
+
 #else
-public class EnNavigationAPI: NSObject  {
 
-    static let kRequestBack = "com.ernnavigationApi.ern.api.request.back";
-
-    static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish";
-    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent";
-
-
-    static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate";
-    static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick";
-
-
-    static let kRequestUpdate = "com.ernnavigationApi.ern.api.request.update";
+public class EnNavigationAPI: NSObject {
+    static let kRequestBack = "com.ernnavigationApi.ern.api.request.back"
+    static let kRequestFinish = "com.ernnavigationApi.ern.api.request.finish"
+    static let kEventNavEvent = "com.ernnavigationApi.ern.api.event.navEvent"
+    static let kRequestNavigate = "com.ernnavigationApi.ern.api.request.navigate"
+    static let kEventOnNavButtonClick = "com.ernnavigationApi.ern.api.event.onNavButtonClick"
+    static let kRequestUpdate = "com.ernnavigationApi.ern.api.request.update"
 
     public lazy var events: EnNavigationAPIEvents = {
-        return EnNavigationEvents()
+        EnNavigationEvents()
     }()
 
-
     public lazy var requests: EnNavigationAPIRequests = {
-        return EnNavigationRequests()
+        EnNavigationRequests()
     }()
 }
 
 public class EnNavigationAPIEvents: NSObject {
-    public func addNavEventEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
-        assertionFailure("should override")
-        return UUID()
-    }
-    public func addOnNavButtonClickEventListener(eventListener: @escaping ElectrodeBridgeEventListener) -> UUID?{
+    public func addNavEventEventListener(eventListener _: @escaping ElectrodeBridgeEventListener) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func removeNavEventEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
-        assertionFailure("should override")
-        return nil
-    }
-    public func removeOnNavButtonClickEventListener(uuid: UUID) -> ElectrodeBridgeEventListener? {
+    public func removeNavEventEventListener(uuid _: UUID) -> ElectrodeBridgeEventListener? {
         assertionFailure("should override")
         return nil
     }
 
-    public func emitEventNavEvent(eventData: NavEventData) {
+    public func emitEventNavEvent(eventData _: NavEventData) {
         assertionFailure("should override")
-
     }
-    public func emitEventOnNavButtonClick(buttonId: String) {
+    public func addOnNavButtonClickEventListener(eventListener _: @escaping ElectrodeBridgeEventListener) -> UUID? {
         assertionFailure("should override")
+        return UUID()
+    }
 
+    public func removeOnNavButtonClickEventListener(uuid _: UUID) -> ElectrodeBridgeEventListener? {
+        assertionFailure("should override")
+        return nil
+    }
+
+    public func emitEventOnNavButtonClick(buttonId _: String) {
+        assertionFailure("should override")
     }
 }
 
 public class EnNavigationAPIRequests: NSObject {
-    public func registerBackRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerBackRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerFinishRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerFinishRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerNavigateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerNavigateRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-    public func registerUpdateRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID?{
+    public func registerUpdateRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
 
-
-    public func unregisterBackRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterBackRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterFinishRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterFinishRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterNavigateRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterNavigateRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-    public func unregisterUpdateRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+    public func unregisterUpdateRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
 
-
-    public func back(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func back(route _: ErnNavRoute, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
 
-    public func finish(finalPayload: String, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func finish(finalPayload _: String, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
 
-    public func navigate(route: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func navigate(route _: ErnNavRoute, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
 
-    public func update(updatedRoute: ErnNavRoute, responseCompletionHandler: @escaping ElectrodeBridgeResponseCompletionHandler) {
+    public func update(updatedRoute _: ErnNavRoute, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
-
 }
-
 #endif
