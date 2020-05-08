@@ -23,9 +23,9 @@
     }
 
     public override init() {
-        eventType = String()
-        viewId = nil
-        jsonPayload = nil
+        self.eventType = String()
+        self.viewId = nil
+        self.jsonPayload = nil
         super.init()
     }
 
@@ -34,18 +34,18 @@
             self.eventType = eventType
         } else {
             assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType]")
-            eventType = dictionary["eventType"] as! String
+            self.eventType = dictionary["eventType"] as! String
         }
 
         if let viewId = dictionary["viewId"] as? String {
-            viewId = viewId
+            self.viewId = viewId
         } else {
-            viewId = nil
+            self.viewId = nil
         }
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            jsonPayload = jsonPayload
+            self.jsonPayload = jsonPayload
         } else {
-            jsonPayload = nil
+            self.jsonPayload = nil
         }
 
         super.init(dictionary: dictionary)
@@ -54,12 +54,12 @@
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["eventType"] = eventType
+        dict["eventType"] = self.eventType
 
-        if let nonNullViewId = viewId {
+        if let nonNullViewId = self.viewId {
             dict["viewId"] = nonNullViewId
         }
-        if let nonNullJsonPayload = jsonPayload {
+        if let nonNullJsonPayload = self.jsonPayload {
             dict["jsonPayload"] = nonNullJsonPayload
         }
         return dict as NSDictionary
@@ -92,9 +92,9 @@ public class NavEventData: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
-        eventType = String()
-        viewId = nil
-        jsonPayload = nil
+        self.eventType = String()
+        self.viewId = nil
+        self.jsonPayload = nil
         super.init()
     }
 
@@ -103,18 +103,18 @@ public class NavEventData: ElectrodeObject, Bridgeable {
             self.eventType = eventType
         } else {
             assertionFailure("\(NavEventData.tag) missing one or more required properties [eventType]")
-            eventType = dictionary["eventType"] as! String
+            self.eventType = dictionary["eventType"] as! String
         }
 
         if let viewId = dictionary["viewId"] as? String {
-            viewId = viewId
+            self.viewId = viewId
         } else {
-            viewId = nil
+            self.viewId = nil
         }
         if let jsonPayload = dictionary["jsonPayload"] as? String {
-            jsonPayload = jsonPayload
+            self.jsonPayload = jsonPayload
         } else {
-            jsonPayload = nil
+            self.jsonPayload = nil
         }
 
         super.init(dictionary: dictionary)
@@ -123,12 +123,12 @@ public class NavEventData: ElectrodeObject, Bridgeable {
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["eventType"] = eventType
+        dict["eventType"] = self.eventType
 
-        if let nonNullViewId = viewId {
+        if let nonNullViewId = self.viewId {
             dict["viewId"] = nonNullViewId
         }
-        if let nonNullJsonPayload = jsonPayload {
+        if let nonNullJsonPayload = self.jsonPayload {
             dict["jsonPayload"] = nonNullJsonPayload
         }
         return dict as NSDictionary
