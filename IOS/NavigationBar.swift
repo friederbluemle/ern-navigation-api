@@ -25,10 +25,10 @@
     }
 
     public override init() {
-        title = String()
-        hide = nil
-        buttons = nil
-        leftButton = nil
+        self.title = String()
+        self.hide = nil
+        self.buttons = nil
+        self.leftButton = nil
         super.init()
     }
 
@@ -37,24 +37,24 @@
             self.title = title
         } else {
             assertionFailure("\(NavigationBar.tag) missing one or more required properties [title]")
-            title = dictionary["title"] as! String
+            self.title = dictionary["title"] as! String
         }
 
         if let hide = dictionary["hide"] as? Bool {
-            hide = hide
+            self.hide = hide
         } else {
-            hide = nil
+            self.hide = nil
         }
         if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: [Any].self, itemType: NavigationBarButton.self),
             let buttonsList = validButtons as? [NavigationBarButton] {
-            buttons = buttonsList
+            self.buttons = buttonsList
         } else {
-            buttons = nil
+            self.buttons = nil
         }
         if let leftButtonDict = dictionary["leftButton"] as? [AnyHashable: Any] {
-            leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
+            self.leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
         } else {
-            leftButton = nil
+            self.leftButton = nil
         }
 
         super.init(dictionary: dictionary)
@@ -63,15 +63,15 @@
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["title"] = title
+        dict["title"] = self.title
 
-        if let nonNullHide = hide {
+        if let nonNullHide = self.hide {
             dict["hide"] = nonNullHide
         }
-        if let nonNullButtons = buttons {
+        if let nonNullButtons = self.buttons {
             dict["buttons"] = nonNullButtons.map { $0.toDictionary() }
         }
-        if let nonNullLeftButton = leftButton {
+        if let nonNullLeftButton = self.leftButton {
             dict["leftButton"] = nonNullLeftButton.toDictionary()
         }
         return dict as NSDictionary
@@ -106,10 +106,10 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
-        title = String()
-        hide = nil
-        buttons = nil
-        leftButton = nil
+        self.title = String()
+        self.hide = nil
+        self.buttons = nil
+        self.leftButton = nil
         super.init()
     }
 
@@ -118,24 +118,24 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
             self.title = title
         } else {
             assertionFailure("\(NavigationBar.tag) missing one or more required properties [title]")
-            title = dictionary["title"] as! String
+            self.title = dictionary["title"] as! String
         }
 
         if let hide = dictionary["hide"] as? Bool {
-            hide = hide
+            self.hide = hide
         } else {
-            hide = nil
+            self.hide = nil
         }
         if let validButtons = try? NSObject.generateObject(data: dictionary["buttons"], classType: [Any].self, itemType: NavigationBarButton.self),
             let buttonsList = validButtons as? [NavigationBarButton] {
-            buttons = buttonsList
+            self.buttons = buttonsList
         } else {
-            buttons = nil
+            self.buttons = nil
         }
         if let leftButtonDict = dictionary["leftButton"] as? [AnyHashable: Any] {
-            leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
+            self.leftButton = NavigationBarLeftButton(dictionary: leftButtonDict)
         } else {
-            leftButton = nil
+            self.leftButton = nil
         }
 
         super.init(dictionary: dictionary)
@@ -144,15 +144,15 @@ public class NavigationBar: ElectrodeObject, Bridgeable {
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["title"] = title
+        dict["title"] = self.title
 
-        if let nonNullHide = hide {
+        if let nonNullHide = self.hide {
             dict["hide"] = nonNullHide
         }
-        if let nonNullButtons = buttons {
+        if let nonNullButtons = self.buttons {
             dict["buttons"] = nonNullButtons.map { $0.toDictionary() }
         }
-        if let nonNullLeftButton = leftButton {
+        if let nonNullLeftButton = self.leftButton {
             dict["leftButton"] = nonNullLeftButton.toDictionary()
         }
         return dict as NSDictionary

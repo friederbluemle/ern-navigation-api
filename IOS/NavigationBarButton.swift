@@ -43,13 +43,13 @@
     }
 
     public override init() {
-        id = String()
-        title = nil
-        icon = nil
-        tint = nil
-        location = nil
-        disabled = nil
-        adaLabel = nil
+        self.id = String()
+        self.title = nil
+        self.icon = nil
+        self.tint = nil
+        self.location = nil
+        self.disabled = nil
+        self.adaLabel = nil
         super.init()
     }
 
@@ -58,38 +58,38 @@
             self.id = id
         } else {
             assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id]")
-            id = dictionary["id"] as! String
+            self.id = dictionary["id"] as! String
         }
 
         if let title = dictionary["title"] as? String {
-            title = title
+            self.title = title
         } else {
-            title = nil
+            self.title = nil
         }
         if let icon = dictionary["icon"] as? String {
-            icon = icon
+            self.icon = icon
         } else {
-            icon = nil
+            self.icon = nil
         }
         if let tint = dictionary["tint"] as? String {
-            tint = tint
+            self.tint = tint
         } else {
-            tint = nil
+            self.tint = nil
         }
         if let location = dictionary["location"] as? String {
-            location = location
+            self.location = location
         } else {
-            location = nil
+            self.location = nil
         }
         if let disabled = dictionary["disabled"] as? Bool {
-            disabled = disabled
+            self.disabled = disabled
         } else {
-            disabled = nil
+            self.disabled = nil
         }
         if let adaLabel = dictionary["adaLabel"] as? String {
-            adaLabel = adaLabel
+            self.adaLabel = adaLabel
         } else {
-            adaLabel = nil
+            self.adaLabel = nil
         }
 
         super.init(dictionary: dictionary)
@@ -98,24 +98,24 @@
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["id"] = id
+        dict["id"] = self.id
 
-        if let nonNullTitle = title {
+        if let nonNullTitle = self.title {
             dict["title"] = nonNullTitle
         }
-        if let nonNullIcon = icon {
+        if let nonNullIcon = self.icon {
             dict["icon"] = nonNullIcon
         }
-        if let nonNullTint = tint {
+        if let nonNullTint = self.tint {
             dict["tint"] = nonNullTint
         }
-        if let nonNullLocation = location {
+        if let nonNullLocation = self.location {
             dict["location"] = nonNullLocation
         }
-        if let nonNullDisabled = disabled {
+        if let nonNullDisabled = self.disabled {
             dict["disabled"] = nonNullDisabled
         }
-        if let nonNullAdaLabel = adaLabel {
+        if let nonNullAdaLabel = self.adaLabel {
             dict["adaLabel"] = nonNullAdaLabel
         }
         return dict as NSDictionary
@@ -168,13 +168,13 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
     }
 
     public override init() {
-        id = String()
-        title = nil
-        icon = nil
-        tint = nil
-        location = nil
-        disabled = nil
-        adaLabel = nil
+        self.id = String()
+        self.title = nil
+        self.icon = nil
+        self.tint = nil
+        self.location = nil
+        self.disabled = nil
+        self.adaLabel = nil
         super.init()
     }
 
@@ -183,38 +183,38 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
             self.id = id
         } else {
             assertionFailure("\(NavigationBarButton.tag) missing one or more required properties [id]")
-            id = dictionary["id"] as! String
+            self.id = dictionary["id"] as! String
         }
 
         if let title = dictionary["title"] as? String {
-            title = title
+            self.title = title
         } else {
-            title = nil
+            self.title = nil
         }
         if let icon = dictionary["icon"] as? String {
-            icon = icon
+            self.icon = icon
         } else {
-            icon = nil
+            self.icon = nil
         }
         if let tint = dictionary["tint"] as? String {
-            tint = tint
+            self.tint = tint
         } else {
-            tint = nil
+            self.tint = nil
         }
         if let location = dictionary["location"] as? String {
-            location = location
+            self.location = location
         } else {
-            location = nil
+            self.location = nil
         }
         if let disabled = dictionary["disabled"] as? Bool {
-            disabled = disabled
+            self.disabled = disabled
         } else {
-            disabled = nil
+            self.disabled = nil
         }
         if let adaLabel = dictionary["adaLabel"] as? String {
-            adaLabel = adaLabel
+            self.adaLabel = adaLabel
         } else {
-            adaLabel = nil
+            self.adaLabel = nil
         }
 
         super.init(dictionary: dictionary)
@@ -223,24 +223,24 @@ public class NavigationBarButton: ElectrodeObject, Bridgeable {
     public func toDictionary() -> NSDictionary {
         var dict = [:] as [AnyHashable: Any]
 
-        dict["id"] = id
+        dict["id"] = self.id
 
-        if let nonNullTitle = title {
+        if let nonNullTitle = self.title {
             dict["title"] = nonNullTitle
         }
-        if let nonNullIcon = icon {
+        if let nonNullIcon = self.icon {
             dict["icon"] = nonNullIcon
         }
-        if let nonNullTint = tint {
+        if let nonNullTint = self.tint {
             dict["tint"] = nonNullTint
         }
-        if let nonNullLocation = location {
+        if let nonNullLocation = self.location {
             dict["location"] = nonNullLocation
         }
-        if let nonNullDisabled = disabled {
+        if let nonNullDisabled = self.disabled {
             dict["disabled"] = nonNullDisabled
         }
-        if let nonNullAdaLabel = adaLabel {
+        if let nonNullAdaLabel = self.adaLabel {
             dict["adaLabel"] = nonNullAdaLabel
         }
         return dict as NSDictionary
