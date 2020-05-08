@@ -144,6 +144,10 @@
         "refresh": {
           "type": "boolean",
           "description": "Set to true if you would like to re-render a component while navigating back to it."
+        },
+        "replace": {
+          "type": "boolean",
+          "description": "Set to true if you would like to replace the last page with the new one."
         }
       },
       "required": [

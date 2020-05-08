@@ -19,13 +19,18 @@
      Set to true if you would like to re-render a component while navigating back to it.
      */
     public let refresh: Bool?
+    /**
+     Set to true if you would like to replace the last page with the new one.
+     */
+    public let replace: Bool?
 
-    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?, refresh: Bool?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?, refresh: Bool?, replace: Bool?) {
         self.path = path
         self.jsonPayload = jsonPayload
         self.navigationBar = navigationBar
         self.overlay = overlay
         self.refresh = refresh
+        self.replace = replace
         super.init()
     }
 
@@ -35,6 +40,7 @@
         navigationBar = nil
         overlay = nil
         refresh = nil
+        replace = nil
         super.init()
     }
 
@@ -66,6 +72,11 @@
         } else {
             refresh = nil
         }
+        if let replace = dictionary["replace"] as? Bool {
+            replace = replace
+        } else {
+            replace = nil
+        }
 
         super.init(dictionary: dictionary)
     }
@@ -86,6 +97,9 @@
         }
         if let nonNullRefresh = refresh {
             dict["refresh"] = nonNullRefresh
+        }
+        if let nonNullReplace = replace {
+            dict["replace"] = nonNullReplace
         }
         return dict as NSDictionary
     }
@@ -113,13 +127,18 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
      Set to true if you would like to re-render a component while navigating back to it.
      */
     public let refresh: Bool?
+    /**
+     Set to true if you would like to replace the last page with the new one.
+     */
+    public let replace: Bool?
 
-    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?, refresh: Bool?) {
+    public init(path: String, jsonPayload: String?, navigationBar: NavigationBar?, overlay: Bool?, refresh: Bool?, replace: Bool?) {
         self.path = path
         self.jsonPayload = jsonPayload
         self.navigationBar = navigationBar
         self.overlay = overlay
         self.refresh = refresh
+        self.replace = replace
         super.init()
     }
 
@@ -129,6 +148,7 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
         navigationBar = nil
         overlay = nil
         refresh = nil
+        replace = nil
         super.init()
     }
 
@@ -160,6 +180,11 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
         } else {
             refresh = nil
         }
+        if let replace = dictionary["replace"] as? Bool {
+            replace = replace
+        } else {
+            replace = nil
+        }
 
         super.init(dictionary: dictionary)
     }
@@ -180,6 +205,9 @@ public class ErnNavRoute: ElectrodeObject, Bridgeable {
         }
         if let nonNullRefresh = refresh {
             dict["refresh"] = nonNullRefresh
+        }
+        if let nonNullReplace = replace {
+            dict["replace"] = nonNullReplace
         }
         return dict as NSDictionary
     }
